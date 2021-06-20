@@ -1,0 +1,64 @@
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+@media screen and (max-width: 39rem) {
+  .container {
+    max-width: 36rem;
+  }
+}
+
+// Tablet, large than phone.
+@media screen and (min-width: 40rem) {
+  .container {
+    max-width: 76rem;
+  }
+}
+
+// Larger than Tablet is Desktop
+@media screen and (min-width: 80rem) {
+  .container {
+    max-width: 116rem;
+  }
+}
+
+// Extra large desktop
+@media screen and (min-width: 120rem) {
+  .container {
+    max-width: 116rem;
+  }
+}
+
+// Simple section with bottom margin.
+section,
+.field,
+.section {
+
+  margin-bottom: $spacer * 2;
+
+  &.is-small {
+    margin-bottom: $spacer;
+  }
+
+  &.is-large {
+    margin-bottom: $spacer * 4;
+  }
+
+  &.is-bordered {
+    padding: $spacer * 1.5 ($spacer * 2);
+    border: .1rem solid $base-border-color;
+  }
+
+  &.is-bordered.is-small {
+    padding: $spacer $spacer * 1.5;
+  }
+
+  &.is-bordered.is-large {
+    padding: $spacer * 2.25 ($spacer * 3);
+  }
+
+}

@@ -1,0 +1,177 @@
+
+
+.toast {
+
+  padding: 1rem 2.5rem 1rem 1.5rem;
+  position: relative;
+  border-left: .3rem solid $color-gray;
+  background-color: $color-gray-lightest;
+
+  &.is-light {
+    background-color: $color-white;
+    border-left-color: $color-gray-light;
+  }
+
+  &.is-primary {
+
+    background-color: $color-primary;
+    color: $color-white;
+    border-left: .3rem solid darken($color-primary, $toast-border-darken-rate);
+
+    .close {
+
+      &:before, &:after {
+        background-color: darken($color-gray-light, 8%);
+      }
+
+      &:hover, &:focus {
+        &:before, &:after {
+          background-color: $color-white;
+        }
+      }
+
+    }
+
+    &.is-light {
+
+      background-color: $color-primary-light;
+      border-left-color: $color-primary;
+      color: darken($color-primary, $toast-border-darken-rate);
+
+      .close {
+        &:hover, &:focus {
+          &:before, &:after {
+            background-color: $color-gray-dark;
+          }
+        }
+      }  
+    
+    }
+
+  }
+
+  &.is-success {
+
+    background-color: $color-success;
+    color: $color-white;
+    border-left: .3rem solid darken($color-success, $toast-border-darken-rate + 20);
+
+    .close {
+
+      &:before, &:after {
+        background-color: darken($color-gray-light, 8%);
+      }
+
+      &:hover, &:focus {
+        &:before, &:after {
+          background-color: $color-white;
+        }
+      }
+      
+    }
+
+
+    &.is-light {
+      
+      background-color: $color-success-light;
+      border-left-color: $color-success;
+      color: darken( $color-success, $toast-border-darken-rate);
+
+      .close {
+        &:hover, &:focus {
+          &:before, &:after {
+            background-color: $color-gray-dark;
+          }
+        }
+      }  
+    
+    }
+
+  }
+
+  &.is-warning {
+
+    background-color: $color-warning;
+    color: $color-white;
+    border-left: .3rem solid darken($color-warning, $toast-border-darken-rate + 20);
+
+    .close {
+
+      &:before, &:after {
+        background-color: darken($color-gray-light, 8%);
+      }
+
+      &:hover, &:focus {
+        &:before, &:after {
+          background-color: $color-white;
+        }
+      }
+      
+    }
+
+
+    &.is-light {
+      
+      background-color: $color-warning-light;
+      border-left-color: $color-warning;
+      color: darken($color-warning, $toast-border-darken-rate);
+
+      .close {
+        &:hover, &:focus {
+          &:before, &:after {
+            background-color: $color-gray-dark;
+          }
+        }
+      }  
+    
+    }
+
+  }
+
+  &.is-danger {
+
+    background-color: $color-danger;
+    color: $color-white;
+    border-left: .3rem solid darken($color-danger, $toast-border-darken-rate);
+
+    .close {
+
+      &:before, &:after {
+        background-color: darken($color-gray-light, 8%);
+      }
+
+      &:hover, &:focus {
+        &:before, &:after {
+          background-color: $color-white;
+        }
+      }
+      
+    }
+
+
+    &.is-light {
+      
+      background-color: $color-danger-light;
+      border-left-color: $color-danger;
+      color: darken( $color-danger, $toast-border-darken-rate);
+
+      .close {
+        &:hover, &:focus {
+          &:before, &:after {
+            background-color: $color-gray-dark;
+          }
+        }
+      }  
+    
+    }
+
+  }
+
+  .close {
+    position: absolute;
+    right: $spacer;
+    top: $spacer;
+  }
+
+}
+

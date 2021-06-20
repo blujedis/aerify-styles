@@ -1,0 +1,168 @@
+// Color
+
+$color-primary: #005cb9 !default;
+$color-success: #18c586 !default;
+$color-warning: #f59851 !default;
+$color-danger: #e4415f !default;
+
+$color-primary-light: lighten($color-primary, 55%) !default;
+$color-success-light: lighten($color-success, 48%) !default;
+$color-warning-light: lighten($color-warning, 29%) !default;
+$color-danger-light: lighten($color-danger, 35%) !default;
+
+$color-gray-darker: #2e2e2e !default;
+$color-gray-dark: #3e3e3e !default;
+$color-gray: #737e86 !default;
+$color-gray-light: #d1d1d1 !default;
+$color-gray-lighter: #e1e1e1 !default;
+$color-gray-lightest: #f4f5f6 !default;
+$color-white: #fff !default;
+
+// Font
+
+$base-font-size: 1.6rem !default;
+
+$font-size-small: $base-font-size - .25rem;
+$font-size-medium: $base-font-size + .2rem;
+$font-size-large: $base-font-size + .45rem;
+$font-size-xlarge: $base-font-size + .7rem;
+$font-size-xxlarge: $base-font-size + .95rem;
+
+$base-font-color: $color-gray-dark;
+
+$base-font-family: -apple-system, system-ui, BlinkMacSystemFont, Roboto, 'Helvetica Neue', 'Segoe UI', Arial,
+'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+'Noto Color Emoji' !default;
+
+$header-font-family: Oswald, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
+'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+'Noto Color Emoji' !default;
+
+$mono-font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace !default;
+
+$fallback-font-family: "Helvetica Neue", sans-serif !default;
+
+// Spacing
+
+$spacer: .5rem;
+
+// Border & Radius
+
+$base-border-color: $color-gray-lighter;
+
+$border-radius-small: .2rem !default;
+$border-radius:  .2rem !default;
+$border-radius-large:  .2rem !default;
+
+// Close 
+
+$close-height-small: 1.4rem !default;
+$close-height: 2rem !default;
+$close-height-large: 2.8rem !default;
+
+// Margin 
+
+$margin-base: 1.25rem !default;
+
+$margin-small: $margin-base / 2 !default;
+$margin-normal: $margin-base;
+$margin-medium: $margin-base * 2 !default;
+$margin-large: $margin-base * 3 !default;
+$margin-xlarge: $margin-base * 4 !default;
+$margin-xxlarge: $margin-base * 5 !default;
+
+// Padding
+
+$padding-base: $margin-base;
+
+$padding-small: $padding-base / 2 !default;
+$padding-normal: $padding-base;
+$padding-medium: $padding-base * 2 !default;
+$padding-large: $padding-base * 3 !default;
+$padding-xlarge: $padding-base * 4 !default;
+$padding-xxlarge:$padding-base * 5 !default;
+
+// Button 
+
+$button-font-size: .9em !default;
+$button-font-size-small: .7em !default;
+$button-font-size-large: 1.2em !default;
+
+$button-height-small: 3rem !default;
+$button-height: 3.8rem !default;
+$button-height-large: 5.5rem !default;
+$button-darken-rate: 8% !default;
+$button-darken-rate-outlined: 15% !default;
+
+$button-loading-height-small: 1.6em !default;
+$button-loading-height: 1.6em !default;
+$button-loading-height-large: 1.6em !default;
+
+
+// Toggle
+
+$toggle-switch-speed: .15s !default;
+$toggle-switch-ease: ease-in !default;
+
+$toggle-width-small: 2.5rem !default;
+$toggle-width: 4rem !default;
+$toggle-width-large: 5.6rem !default;
+
+$toggle-height-small: 1.5rem !default;
+$toggle-height: 2rem !default;
+$toggle-height-large: 3rem !default;
+
+$toggle-gutter-small: .2rem !default;
+$toggle-gutter: .2rem !default;
+$toggle-gutter-large: .3rem !default;
+
+$toggle-radius-small: 50% !default;
+$toggle-radius: 50% !default;
+$toggle-radius-large: 50% !default;
+
+$toggle-radius-small: $toggle-height-small / 2;
+$toggle-radius: $toggle-height / 2;
+$toggle-radius-large: $toggle-height-large / 2;
+
+$toggle-switch-size-small: $toggle-height-small - ($toggle-gutter-small * 2);
+$toggle-switch-size: $toggle-height - ($toggle-gutter * 2);
+$toggle-switch-size-large: $toggle-height-large - ($toggle-gutter-large * 2);
+
+// Toast
+
+$toast-border-darken-rate: 20%;
+
+// Range Slider
+
+$slider-range-width: 100% !default;
+
+$slider-range-handle-size-small: 1rem !default;
+$slider-range-handle-size: 1.5rem !default;
+$slider-range-handle-size-large: 2rem !default;
+
+$slider-range-track-height-small: .25rem !default;
+$slider-range-track-height: .35rem !default;
+$slider-range-track-height-large: .4rem !default;
+
+// Steps
+
+$step-marker-size-xsmall: 1.4rem !default;
+$step-marker-size-small: 2rem !default;
+$step-marker-size: 3rem !default;
+$step-marker-size-large: 4.5rem !default;
+
+$step-bar-size-xsmall: .24rem !default;
+$step-bar-size-small: .3rem !default;
+$step-bar-size: .4rem !default;
+$step-bar-size-large: .4rem !default;
+
+$step-marker-border-size-xsmall: .2rem !default;
+$step-marker-border-size-small: .2rem !default;
+$step-marker-border-size: .275rem !default;
+$step-marker-border-size-large: .375rem !default;
+
+// Pager
+
+$pager-link-height-small: 3rem !default;
+$pager-link-height: 4rem !default;
+$pager-link-height-large: 6rem !default;

@@ -1,0 +1,49 @@
+{
+  "name": "@aerify/styles",
+  "version": "0.0.1",
+  "description": "Aerify ",
+  "keywords": [
+    "css",
+    "sass",
+    "styles",
+    "flexbox",
+    "responsive",
+    "framework"
+  ],
+  "homepage": "https://github.com/blujedis/aerify-styles#readme",
+  "bugs": {
+    "url": "https://github.com/blujedis/aerify-styles/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blujedis/aerify-styles.git"
+  },
+  "license": "MIT",
+  "author": "Blujedi LLC <blujedicorp@gmail.com>",
+  "main": "dist/aerify.scss",
+  "unpkg": "dist/aerify.css",
+  "style": "dist/aerify.min.css",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "copy": "cp -r src/scss/ dist/scss/",
+    "prebuild": "npm run clean",
+    "build:autoprefix": "postcss --use autoprefixer --map false --output dist/css/aerify.css dist/css/aerify.css",
+    "build:cleancss": "cleancss -o dist/css/aerify.min.css dist/css/aerify.css",
+    "build:sass": "sass --style=compressed src/scss/aerify.scss:dist/css/aerify.css",
+    "build": "npm run build:sass && npm run build:autoprefix && npm run build:cleancss",
+    "prerelease": "npm run build",
+    "postrelease": "git push --follow-tags",
+    "release": "npx standard-version",
+    "start": "rollup -c -w"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "clean-css-cli": "^5.3.0",
+    "postcss-cli": "^8.3.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.32.13"
+  }
+}

@@ -1,0 +1,83 @@
+// <div className="modal is-active">
+  // <div className="modal-background"></div>
+  // <div className="modal-body">
+  //    
+  //   Modal Content can be used for typical white background with close button.
+  //   Othwerwise exclude and define your own content element.
+  //
+  //   <div className="modal-content">
+  //     <a className="close" onClick={() => setVisible('modal')}></a>
+  //     Some content.
+  //   </div>
+  // 
+  // </div>
+// </div>
+
+$modal-background-color: rgba(10,10,10,.86);
+$modal-zindex: 40;
+$modal-content-max-height: calc(100vh - 4rem);
+$modal-content-min-height: 10rem;
+$modal-content-width: 64rem;
+
+.modal {
+
+  align-items: center;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  z-index: $modal-zindex;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .modal-background {
+    position: absolute;
+    width: 100vh;
+    height: 100vh;
+    background-color: $modal-background-color;
+  }
+  
+  .modal-body {
+    margin: 0 auto;
+    max-height: $modal-content-max-height;
+    min-height: $modal-content-min-height;
+    width: $modal-content-width;
+    position: relative;
+
+    .modal-content {
+
+      @extend .box;
+      overflow: auto;
+      border-radius: $border-radius;
+      background-color: $color-white;
+      padding: 2.5rem;
+   
+      .close {
+        position: absolute;
+        right: $spacer;
+        top: $spacer;
+      }
+
+    }
+
+  }
+
+  &.is-active {
+    display: flex;
+  }
+
+}
+
+@media screen and (max-width: 39rem) {
+  .modal {
+    .modal-body,
+    div:nth-of-type(2) {
+      width: 38rem;
+    }
+  }
+  
+}

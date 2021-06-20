@@ -1,0 +1,67 @@
+
+.dropdown {
+
+  display: inline-flex;
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  button, .button, .dropdown-trigger {
+    margin-bottom: .3rem;
+    padding-right: 4rem;
+
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="30"><path fill="%23' + str-slice(inspect($color-gray-light), 2) + '" d="M0,0l6,8l6-8"/></svg>') center right no-repeat;
+  
+    &:focus {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="30"><path fill="%23' + str-slice(inspect($color-primary), 2) + '" d="M0,0l6,8l6-8"/></svg>');
+    }
+
+  }
+
+  .dropdown-items,
+  > div {
+    @extend .has-shadow;
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: $border-radius;
+    background-color: $color-white;
+    border: .1rem solid $color-gray-lighter;
+    padding: .7rem 0;
+
+    .divider {
+      margin: .7rem 0;
+    }
+
+    a, .dropdown-item {
+      display: block;
+      padding: .7rem;
+      height: 100%;
+      color: $base-font-color;
+      font-size: .9em;
+      white-space: nowrap; // push width set .dropdown-items to min/max width for constency.
+
+      &:hover {
+        background-color: $color-gray-lightest;
+      }
+
+    }
+
+  }
+
+  &.is-hoverable:hover, &.is-active {
+    .dropdown-items { display: flex; }
+  }
+
+  &.is-right { 
+    .dropdown-items {
+     text-align: right;
+     right: 0;
+     left: auto;
+    }
+  }
+
+}

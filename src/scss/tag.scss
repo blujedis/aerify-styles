@@ -1,0 +1,52 @@
+
+.tag {
+
+  position: relative;
+  align-items: center;
+  background-color: $color-gray;
+  border-radius: $border-radius;
+  //text-transform: uppercase;
+  font-weight: 500;
+  color: $color-white;
+  display: inline-flex;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: $button-font-size;
+  height: 3rem;
+  padding-left: .75em;
+  padding-right: .75em;
+  text-transform: uppercase;
+  
+  &.is-small {
+    font-size: $button-font-size-small;
+    height: 2rem;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: $border-radius-small;
+  }
+
+  &.is-large {
+    font-size: $button-font-size-large;
+    height: 4rem;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    border-radius: $border-radius-large;
+  }
+
+  &.is-primary {
+    background-color: $color-primary;
+  }
+
+  &.is-success {
+    background-color: $color-success;
+  }
+
+  &.is-warning {
+    background-color: $color-warning;
+  }
+
+  &.is-danger {
+    background-color: $color-danger;
+  }
+
+}

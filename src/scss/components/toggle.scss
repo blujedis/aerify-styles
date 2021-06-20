@@ -1,0 +1,132 @@
+// <label className="toggle">
+//   <input type="checkbox" checked="checked">
+//   <span></span>
+// </label>
+
+.toggle {
+  
+  display: inline;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  font-weight: normal;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked ~ .toggle-switch {
+    background-color: $color-gray-darker;
+    &:after {
+      left: $toggle-width - $toggle-switch-size - $toggle-gutter;
+    }
+  }
+
+  &.is-primary input:checked ~ .toggle-switch {
+    background-color: $color-primary;
+  }
+
+  &.is-success input:checked ~ .toggle-switch {
+    background-color: $color-success;
+  }
+
+  &.is-warning input:checked ~ .toggle-switch {
+    background-color: $color-warning;
+  }
+
+  &.is-danger input:checked ~ .toggle-switch {
+    background-color: $color-danger;
+  }
+
+  &.is-small {
+
+      input:checked ~ .toggle-switch {
+        &:after {
+          left: $toggle-width-small - $toggle-switch-size-small - $toggle-gutter-small;
+        }
+      }
+  
+      .toggle-switch {
+  
+        border-radius: $toggle-radius-small;
+        height: $toggle-height-small;
+        width: $toggle-width-small;
+  
+        &:after {
+          left: $toggle-gutter-small;
+          top: $toggle-gutter-small;
+          width: $toggle-switch-size-small;
+          height: $toggle-switch-size-small;
+          border-radius: $toggle-radius-small;
+        }
+      }
+
+  }
+
+  &.is-large {
+
+    input:checked ~ .toggle-switch {
+      &:after {
+        left: $toggle-width-large - $toggle-switch-size-large - $toggle-gutter-large;
+      }
+    }
+
+    .toggle-switch {
+
+      border-radius: $toggle-radius-large;
+      height: $toggle-height-large;
+      width: $toggle-width-large;
+
+      &:after {
+        left: $toggle-gutter-large;
+        top: $toggle-gutter-large;
+        width: $toggle-switch-size-large;
+        height: $toggle-switch-size-large;
+        border-radius: $toggle-radius-large;
+      }
+    }
+
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: $toggle-height;
+    width: $toggle-width;
+    border-radius: $toggle-radius;
+    background-color: $color-gray;
+    transition: background-color $toggle-switch-speed $toggle-switch-ease;
+
+    &:before {
+      content: "\00a0"; // needed to keep on same line without having to add &nbsp; in span.
+    }
+
+    &:after {
+      content: " ";
+      position: absolute;
+      left: $toggle-gutter;
+      top: $toggle-gutter;
+      width: $toggle-switch-size;
+      height: $toggle-switch-size;
+      border-radius: $toggle-radius;
+      background: $color-white;
+      transition: left $toggle-switch-speed $toggle-switch-ease;
+    }
+
+  }
+
+  .toggle-label + span{
+    margin-left: $spacer;
+  }
+
+  span + .toggle-label {
+    margin-left: $spacer;
+  }
+
+
+}
