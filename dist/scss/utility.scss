@@ -1,0 +1,51 @@
+
+// Position
+
+.clearfix {
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.is-fullwidth {
+  width: 100% !important;
+}
+
+// Prevent Scrolling
+
+.is-noverflow {
+  overflow: hidden !important;
+}
+
+// Animation
+
+.prevent-flicker {
+  backface-visibility: hidden;
+  transform: translate3D(0, 0, 0);
+}
+
+// Borders, Shadows...etc.
+
+.has-shadow {
+  box-shadow:
+  0 0.5px 1.1px rgba(0, 0, 0, 0.014),
+  0 1.3px 2.7px rgba(0, 0, 0, 0.02),
+  0 2.4px 5px rgba(0, 0, 0, 0.025),
+  0 4.2px 8.9px rgba(0, 0, 0, 0.03),
+  0 7.9px 16.7px rgba(0, 0, 0, 0.036),
+  0 19px 40px rgba(0, 0, 0, 0.05)
+  ;
+}
+
+
+

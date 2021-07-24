@@ -1,0 +1,21 @@
+
+// $duration: .2s;
+// $distance: 8px;
+// $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+a {
+  position: relative;
+  transition: clip-path 275ms ease;
+  color: $color-primary;
+  text-decoration: none;
+
+  &.is-link { // if is button.
+    height: auto;
+    line-height: normal;
+  }
+
+  &:hover {
+    color: lightness(primary, 10%);
+  }
+
+}

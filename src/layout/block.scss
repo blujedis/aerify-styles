@@ -1,0 +1,29 @@
+// Simple section with bottom margin.
+section,
+.field,
+.block {
+
+  margin-bottom: calc(#{$spacer} * 2);
+
+  &.is-small {
+    margin-bottom: $spacer;
+  }
+
+  &.is-large {
+    margin-bottom: calc(#{$spacer} * 4);
+  }
+
+  &.is-bordered {
+    padding: calc(#{$spacer} * 1.5) calc(#{$spacer} * 2);;
+    border: rem(1px) solid $base-border-color;
+  }
+
+  &.is-bordered.is-small {
+    padding: $spacer calc(#{$spacer} * 1.5);;
+  }
+
+  &.is-bordered.is-large {
+    padding: calc(#{$spacer} * 2.25) calc(#{$spacer} * 3);
+  }
+
+}

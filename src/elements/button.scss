@@ -1,0 +1,815 @@
+
+
+@mixin buttonSemantic($color, $lightness) {
+
+  $color-light: lightness($color, $lightness);
+  $color-light-darken: lightness($color, $lightness + 10);
+
+  background-color: $color;
+  color: $color-white;
+  border: rem(1px) solid $color;
+
+  &:focus,
+  &:hover {
+    background-color: lightness($color, $button-darken-rate);
+    border-color: lightness($color, $button-darken-rate); 
+    outline: 0;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.125em alpha(primary, .3); 
+  }
+
+  &[disabled] {
+
+    &:focus,
+    &:hover {
+      background-color: $color;
+      border-color: $color;
+    }
+
+  }
+
+  &.is-light {
+
+    background-color: $color-light;
+    border-color: $color-light;
+    color: $color;
+
+    &:focus,
+    &:hover {
+      background-color:   $color-light-darken;
+      border-color:   $color-light-darken; 
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.125em alpha($color, .3); // rgba($color-primary, .3);
+    }
+  
+    &[disabled] {
+
+      &:focus,
+      &:hover {
+        background-color: $color-light;
+        border-color: $color-light;
+      }
+      
+    }
+
+  }
+
+}
+
+
+.button,
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+
+  background-color: transparent;
+  border: rem(1px) solid $color-gray-lighter;
+  color: $color-gray;
+  border-radius: $border-radius; 
+  cursor: pointer;
+  font-size: $button-font-size;
+  font-weight: 500;
+  height: $button-height;
+  line-height: $button-height;
+  letter-spacing: rem(1px);
+  padding: 0 rem(18px);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transition: background-color 0.3s ease;
+
+  &:focus,
+  &:hover {
+    background-color: $color-gray;
+    color: $color-white;
+    outline: 0;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.125em alpha(gray, .3); // rgba($color-gray, .3);
+  }
+
+  &[disabled] {
+    cursor: default;
+    opacity: 0.5;
+    &:focus,
+    &:hover {
+      background-color: $color-gray;
+      border-color: $color-gray;
+    }
+  }
+
+  &.is-primary {
+
+   @include buttonSemantic($color-primary, $color-primary-lightness);
+
+
+    // background-color: $color-primary;
+    // border: rem(1px) solid $color-primary;
+    // color: $color-white;
+
+    // &:focus,
+    // &:hover {
+    //   background-color: lightness(primary, 75%) !important;
+    //   border-color: lightness(primary, $button-darken-rate); 
+    //   outline: 0;
+    // }
+
+    // &:focus {
+    //   box-shadow: 0 0 0 0.125em alpha(primary, .3); 
+    // }
+  
+    // &[disabled] {
+
+    //   &:focus,
+    //   &:hover {
+    //     background-color: $color-primary;
+    //     border-color: $color-primary;
+    //   }
+
+    // }
+
+    // &.is-light {
+
+    //   background-color: lightness(primary, $color-primary-lightness);
+    //   border-color: lightness(primary, $color-primary-lightness);
+    //   color: $color-primary;
+
+    //   &:focus,
+    //   &:hover {
+    //     background-color: lightness(primary-light, math.div($button-darken-rate ,2)); // darken($color-primary-light, math.div($button-darken-rate ,2));
+    //     border-color: lightness(primary-light, math.div($button-darken-rate ,2)); // darken($color-primary-light, math.div($button-darken-rate,2));
+    //   }
+  
+    //   &:focus {
+    //     box-shadow: 0 0 0 0.125em alpha(primary, .3); // rgba($color-primary, .3);
+    //   }
+    
+    //   &[disabled] {
+  
+    //     &:focus,
+    //     &:hover {
+    //       background-color: lightness(primary, $color-primary-lightness);
+    //       border-color: lightness(primary, $color-primary-lightness);
+    //     }
+        
+    //   }
+
+    // }
+
+    // &.is-outlined.is-light {
+    //   &:focus,
+    //   &:hover {
+    //     border-color: lightness(primary-light, $button-darken-rate);
+    //   }
+    // }
+
+  }
+
+  &.is-success {
+
+    background-color: $color-success;
+    border: 0rem(1px) solid $color-success;
+    color: $color-white;
+
+    &:focus,
+    &:hover {
+      background-color: lightness(success, $button-darken-rate); //  darken($color-success, $button-darken-rate);
+      border-color: lightness(success, $button-darken-rate); //  darken($color-success, $button-darken-rate);
+      outline: 0;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.125em alpha(success, .3); //  rgba($color-success, .3);
+    }
+  
+
+    &[disabled] {
+
+      &:focus,
+      &:hover {
+        background-color: $color-success;
+        border-color: $color-success;
+      }
+    }
+
+    &.is-light {
+
+      background-color: lightness(success, $color-success-lightness);
+      border-color: lightness(success, $color-success-lightness);
+      color: $color-success;
+
+      &:focus,
+      &:hover {
+        background-color: lightness(success-light, math.div($button-darken-rate,2)); // darken($color-success-light, math.div($button-darken-rate,2));
+        border-color: lightness(success-light, math.div($button-darken-rate,2)); // darken($color-success-light, math.div($button-darken-rate, 2));
+      }
+  
+      &:focus {
+        box-shadow: 0 0 0 0.125em alpha(success, .3); //  rgba($color-success, .3);
+      }
+    
+      &[disabled] {
+  
+        &:focus,
+        &:hover {
+          background-color: lightness(success, $color-success-lightness);
+          border-color: lightness(success, $color-success-lightness);
+        }
+        
+      }
+
+    }
+
+    &.is-outlined.is-light {
+      &:focus,
+      &:hover {
+        border-color: lightness(success-light, $button-darken-rate); // darken($color-success-light, $button-darken-rate);
+      }
+    }
+
+  }
+
+  &.is-warning {
+
+    background-color: $color-warning;
+    border: 0rem(1px) solid $color-warning;
+    color: $color-white;
+
+    &:focus,
+    &:hover {
+      background-color: lightness(warning, $button-darken-rate); // darken($color-warning, $button-darken-rate);
+      border-color: lightness(warning, $button-darken-rate); // darken($color-warning, $button-darken-rate);
+      outline: 0;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.125em alpha(warning, .3); // rgba($color-warning, .3);
+    }
+  
+
+    &[disabled] {
+
+      &:focus,
+      &:hover {
+        background-color: $color-warning;
+        border-color: $color-warning;
+      }
+    }
+
+    &.is-light {
+
+      background-color: lightness(success, $color-warning-lightness);
+      border-color: lightness(success, $color-warning-lightness);
+      color: $color-warning;
+
+      &:focus,
+      &:hover {
+        background-color: lightness(warning-light, math.div($button-darken-rate, 2)); // darken($color-warning-light, math.div($button-darken-rate, 2));
+        border-color: lightness(warning-light, math.div($button-darken-rate, 2)); // darken($color-warning-light, math.div($button-darken-rate, 2));
+      }
+  
+      &:focus {
+        box-shadow: 0 0 0 0.125em alpha(warning, .3); // rgba($color-warning, .3);
+      }
+    
+      &[disabled] {
+  
+        &:focus,
+        &:hover {
+          background-color: lightness(success, $color-warning-lightness);
+          border-color: lightness(success, $color-warning-lightness);
+        }
+        
+      }
+
+    }
+
+    &.is-outlined.is-light {
+      &:focus,
+      &:hover {
+        border-color: lightness(warning-light, $button-darken-rate); // darken($color-warning-light, $button-darken-rate);
+      }
+    }
+
+  }
+
+  &.is-danger {
+
+    background-color: $color-danger;
+    border: 0rem(1px) solid $color-danger;
+    color: $color-white;
+
+    &:focus,
+    &:hover {
+      background-color: lightness(danger, $button-darken-rate); //  darken($color-danger, $button-darken-rate);
+      border-color: lightness(danger, $button-darken-rate); // darken($color-danger, $button-darken-rate);
+      outline: 0;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.125em alpha(danger, .3); // rgba($color-danger, .3);
+    }
+  
+
+    &[disabled] {
+
+      &:focus,
+      &:hover {
+        background-color: $color-danger;
+        border-color: $color-danger;
+      }
+    }
+
+    &.is-light {
+
+      background-color: lightness(success, $color-danger-lightness);
+      border-color: lightness(success, $color-danger-lightness);
+      color: $color-danger;
+
+      &:focus,
+      &:hover {
+        background-color: lightness(danger-light, math.div($button-darken-rate, 2)); // darken($color-danger-light, math.div($button-darken-rate, 2));
+        border-color: lightness(danger-light, math.div($button-darken-rate, 2)); // darken($color-danger-light, math.div($button-darken-rate, 2));
+      }
+  
+      &:focus {
+        box-shadow: 0 0 0 0.125em alpha(danger, .3); // rgba($color-danger, .3);
+      }
+    
+      &[disabled] {
+  
+        &:focus,
+        &:hover {
+          background-color: lightness(success, $color-danger-lightness);
+          border-color: lightness(success, $color-danger-lightness);
+        }
+        
+      }
+
+    }
+
+    &.is-outlined.is-light {
+      &:focus,
+      &:hover {
+        border-color: lightness(danger-light, $button-darken-rate); // darken($color-danger-light, $button-darken-rate);
+      }
+    }
+
+
+  }
+
+  &.is-dark {
+
+    background-color: $color-gray-dark;
+    border: rem(1px) solid $color-gray-dark;
+    color: $color-white;
+
+    &:focus,
+    &:hover {
+      background-color: lightness(gray-dark, $button-darken-rate); // darken($color-gray-dark, $button-darken-rate);
+      border-color: lightness(gray-dark, $button-darken-rate); //  darken($color-gray-dark, $button-darken-rate);
+      outline: 0;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.125em alpha(gray-dark, .3); // rgba($color-gray-dark, .3);
+    }
+  
+
+    &[disabled] {
+
+      &:focus,
+      &:hover {
+        background-color: $color-gray-dark;
+        border-color: $color-gray-dark;
+      }
+    }
+
+    &.is-light {
+
+      background-color: $color-gray-lighter;
+      border-color: $color-gray-lighter;
+      color: $color-gray-dark;
+
+      &:focus,
+      &:hover {
+        background-color: lightness(gray-lighter, math.div($button-darken-rate, 2)); // darken($color-gray-lighter, math.div($button-darken-rate, 2));
+        border-color: lightness(gray-lighter, math.div($button-darken-rate, 2)); //
+      }
+  
+      &:focus {
+        box-shadow: 0 0 0 0.125em alpha(gray-dark, .3); // rgba($color-gray-dark, .3);
+      }
+    
+      &[disabled] {
+  
+        &:focus,
+        &:hover {
+          background-color: $color-gray-lighter;
+          border-color: $color-gray-lighter;
+        }
+        
+      }
+
+    }
+
+    &.is-outlined.is-light {
+      &:focus,
+      &:hover {
+        border-color: lightness(gray-lighter, $button-darken-rate); // darken($color-gray-lighter, $button-darken-rate);
+      }
+    }
+
+
+  }
+
+  &.is-small {
+    font-size: $button-font-size-small;
+    font-weight: 700;
+    height: $button-height-small;
+    letter-spacing: rem(1px);
+    line-height: $button-height-small + -rem(1px); // just looks a little better with this adjustment.
+    padding: 0 rem(17.5px);
+    border-radius: $border-radius;
+  }
+
+  &.is-large {
+    font-size: $button-font-size-large;
+    font-weight: 700;
+    height:$button-height-large;
+    line-height: $button-height-large;
+    padding: 0 rem(40px);
+    border-radius: $border-radius-large;
+  }
+
+  &.is-outlined {
+
+    background-color: transparent;
+    color: $color-gray;
+    // transition: background-color 0.3s ease;
+
+    &:focus,
+    &:hover {
+      background-color: transparent;
+      border-color: $color-gray; 
+      color: lightness(var(--color-gray), $button-outline-darken-rate);
+    }
+
+    &[disabled] {
+      &:focus,
+      &:hover {
+        border-color: inherit;
+        color: $color-gray;
+      }
+    }
+
+    &.is-primary {
+
+      background: transparent;
+      color: $color-primary;
+
+      &:focus,
+      &:hover {
+        background: transparent;
+        border-color: lightness(primary, $button-outline-darken-rate); // darken($color-primary, $button-outline-darken-rate);
+        color: lightness(primary, $button-outline-darken-rate); // darken($color-primary, $button-outline-darken-rate);
+      }
+
+      &[disabled] {
+        &:focus,
+        &:hover {
+          border-color: inherit;
+          color: $color-primary;
+        }
+      }
+
+    }
+
+    &.is-success {
+
+      background: transparent;
+      color: $color-success;
+
+      &:focus,
+      &:hover {
+        background: transparent;
+        border-color: lightness(success, $button-outline-darken-rate); // darken($color-success, $button-outline-darken-rate);
+        color: lightness(success, $button-outline-darken-rate); // darken($color-success, $button-outline-darken-rate);
+      }
+
+      &[disabled] {
+        &:focus,
+        &:hover {
+          border-color: inherit;
+          color: $color-success;
+        }
+      }
+
+    }
+
+    &.is-warning {
+
+      background: transparent;
+      color: $color-warning;
+
+      &:focus,
+      &:hover {
+        background: transparent;
+        border-color: lightness(warning, $button-outline-darken-rate); // darken($color-warning, $button-outline-darken-rate);
+        color: lightness(warning, $button-outline-darken-rate); // darken($color-warning, $button-outline-darken-rate);
+      }
+
+      &[disabled] {
+        &:focus,
+        &:hover {
+          border-color: inherit;
+          color: $color-warning;
+        }
+      }
+
+    }
+
+    &.is-danger {
+
+      background: transparent;
+      color: $color-danger;
+
+      &:focus,
+      &:hover {
+        background: transparent;
+        border-color: lightness(danger, $button-outline-darken-rate); // darken($color-danger, $button-outline-darken-rate);
+        color: lightness(danger, $button-outline-darken-rate); // darken($color-danger, $button-outline-darken-rate);
+      }
+
+      &[disabled] {
+        &:focus,
+        &:hover {
+          border-color: inherit;
+          color: $color-danger;
+        }
+      }
+
+    }
+
+    &.is-dark {
+
+      background: transparent;
+      color: $color-gray-darker;
+
+      &:focus,
+      &:hover {
+        background: transparent;
+        border-color: lightness(gray-dark, $button-outline-darken-rate); // darken($color-gray-dark, $button-outline-darken-rate);
+        color: lightness(gray-dark, $button-outline-darken-rate); // darken($color-gray-dark, $button-outline-darken-rate);
+      }
+
+      &[disabled] {
+        &:focus,
+        &:hover {
+          border-color: inherit;
+          color: $color-gray-dark;
+        }
+      }
+
+    }
+
+  }
+
+  &.is-link {
+
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: $color-gray;
+    padding: 0;
+
+    &:focus,
+    &:hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: $color-gray;
+    }
+
+    &[disabled] {
+      &:focus,
+      &:hover {
+        // color: $color-primary;
+        color: $color-gray;
+      }
+    }
+
+    &.is-primary {
+      color: $color-primary;
+
+      &:focus,
+      &:hover {
+        color: lightness(primary, $button-darken-rate); // darken($color-primary, $button-darken-rate);
+      }
+  
+      &[disabled] {
+        &:focus,
+        &:hover {
+          color: $color-primary;
+        }
+      }
+
+    }
+
+
+  }
+
+  &.is-rounded {
+    border-radius: 290486px;
+  }
+
+  &.is-loading {
+
+    pointer-events: none;
+    color: transparent !important;
+    position: relative;
+
+    &:after {
+      // left: calc(50% - (#{math.div($button-loading-height,2)}));
+      // top: calc(50% - (#{math.div($button-loading-height,2)}));
+      left: calc(50% - (calc($button-loading-height / 2)));
+      top: calc(50% - (calc($button-loading-height / 2)));
+      position: absolute !important;
+      border: rem(4px) solid alpha(gray-lightest, .3); // rgba($color-gray-lightest, .3); 
+      border-top: rem(3px) solid alpha(gray-lightest, .9); // rgba($color-gray-lightest, .9); 
+      border-radius: 50%;
+      width: $button-loading-height;
+      height: $button-loading-height;
+      animation: simpleSpin .5s linear infinite;
+      display: block;
+      content: '';
+    }
+  
+  }
+
+  &.is-loading.is-dark {
+    &:after {
+      border-color: $color-gray;
+      border-top-color: $color-gray-dark;
+    }
+  }
+
+  &.is-loading.is-primary {
+    &:after {
+      border-color: alpha(primary, .5); // rgba($color-primary, .5);
+      border-top-color: $color-primary;
+    }
+  }
+
+}
+
+.buttons {
+  
+  display: flex;
+  justify-content: flex-start;
+  flex:1;
+
+  .button,
+  button,
+  input[type='button'],
+  input[type='reset'],
+  input[type='submit'] {
+
+    &:not(:last-child){
+      margin-right: $spacer;
+    }
+
+  }
+
+  &.is-centered {  justify-content: center; }
+  &.is-right {  justify-content: flex-end; }
+
+  &.is-grouped {
+
+    @extend .prevent-flicker;
+
+    .is-active {
+      z-index: 3; // hides sibling border.
+      pointer-events: none;
+      background-color: $color-gray;
+      border: rem(1px) solid $color-gray;
+      color: $color-white;
+    }
+
+    .button,
+    button,
+    input[type='button'],
+    input[type='reset'],
+    input[type='submit'] {
+
+      // override background/border here
+      // when grouped use "is-active" 
+      // to show toggled state.
+      background-color: transparent;
+      border: rem(1px) solid $color-gray-lighter;
+      color: $color-gray;
+
+      &:not(:last-child) {
+        margin-right: -rem(1px);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:not(:first-child) {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:focus,
+      &:hover {
+        background-color: transparent;
+        border-color: $color-gray;
+        color: lightness(color-gray, $button-outline-darken-rate); // darken($color-gray, $button-outline-darken-rate);
+        z-index: 4; // ensure border is seen or could be hidden behind shifted margin.
+        outline: 0;
+      }
+
+      &.is-primary.is-active {
+        background-color: $color-primary;
+        border: rem(1px) solid $color-primary;
+        color: $color-white;
+      }
+
+      &.is-success.is-active {
+        background-color: $color-success;
+        border: rem(1px)  solid $color-success;
+        color: $color-white;
+      }
+
+      &.is-warning.is-active {
+        background-color: $color-warning;
+        border: rem(1px)  solid $color-warning;
+        color: $color-white;
+      }
+
+      &.is-danger.is-active {
+        background-color: $color-danger;
+        border: rem(1px) solid $color-danger;
+        color: $color-white;
+      }
+
+      &.is-dark.is-active {
+        background-color: $color-gray-dark;
+        border: rem(1px)  solid $color-gray-dark;
+        color: $color-white;
+      }
+
+    }
+
+    &.is-rounded {
+
+      .button,
+      button,
+      input[type='button'],
+      input[type='reset'],
+      input[type='submit'] {
+
+        &:first-child {
+          border-top-left-radius: 290486px;
+          border-bottom-left-radius: 290486px;
+        }
+        &:last-child {
+          border-top-right-radius: 290486px;
+          border-bottom-right-radius: 290486px;
+        }
+
+      }
+
+   
+    }
+
+  }
+
+}
+
+
+@keyframes simpleSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+
+@media screen and (max-width: calc(rem(400px) - 4)) {
+  .buttons { 
+    flex-flow: row wrap;
+  }
+}

@@ -1,0 +1,81 @@
+hr {
+  border: 0;
+  border-top: 0.1rem solid rgba($color-gray-lighter, 0.7);
+  margin: 2rem 0;
+}
+
+// NOTE: Vertical divider requires outer relative container.
+
+.divider {
+
+  &.is-horizontal {
+
+    display: flex;
+    flex-direction: row;
+    letter-spacing: rem(1px);
+    margin: rem(20px) 0;
+
+    &:before, &:after {
+      content: " ";
+      flex: 1 1;
+      border-bottom: rem(1px) solid rgba(10,10,10, 0.1);
+      margin: auto;
+    }
+
+    &.has-text {
+
+      &:before {
+        margin-right: rem(10px);
+      }
+
+      &:after {
+        margin-left: rem(10px);
+      }
+
+    }
+
+  }
+
+  &.is-vertical {
+
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 50%;
+    line-height: 0;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+  
+    &:after {
+      top: auto;
+      bottom: 0;
+    }
+  
+    &:before {
+      top: -100%;
+    }
+  
+    &:before, &:after {
+      position: absolute;
+      left: 50%;
+      content: '';
+      z-index: 9;
+      border-left: rem(1px) solid $color-gray-lighter;
+      border-right: rem solid rgba(255,255,255,.1);
+      width: 0;
+      height: 100%;
+    }
+
+    &.has-text:before, &.has-text:after {
+      height: calc(100% - #{rem(10px)});
+    }
+
+  }
+
+}
+

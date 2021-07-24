@@ -1,0 +1,184 @@
+// <div className="file is-fullwidth is-right">
+//   <div className="file-control">
+//     <input type="file" className="file-input"/>
+//     <div className="file-action">
+//       <button className="file-button is-primary">Select File</button>
+//       <span className="file-name has-border">No file selected</span>
+//     </div>
+//   </div>
+// </div>
+
+
+.file {
+
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: stretch;
+  
+  .file-control,
+  > div {
+    
+    align-items: stretch;
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+
+    .file-input,
+    > input {
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: -rem(120px); // use if .file is flex box for better cursor alignment.
+      opacity: 0;
+      outline: 0;
+      position: absolute;
+      cursor: pointer;
+      z-index: 40;
+
+      &:hover + button, 
+      &:focus + button,
+      &:hover + .button,
+      &:focus + .button  {
+
+        outline: 0;
+        background-color: lightness(color-gray, $button-darken-rate); // darken($color-gray, $button-darken-rate);
+        border-color: lightness(color-gray, $button-darken-rate);
+
+        &.is-primary {
+
+          outline: 0;
+          background-color: lightness(color-primary, $button-darken-rate);
+          border-color: lightness(color-primary, $button-darken-rate);
+        }
+
+        &.is-success {
+          outline: 0;
+          background-color: lightness(color-success, $button-darken-rate);
+          border-color: lightness(color-success, $button-darken-rate);
+        }
+
+        &.is-warning {
+          outline: 0;
+          background-color: lightness(color-warning, $button-darken-rate);
+          border-color: lightness(color-warning, $button-darken-rate);
+        }
+
+        &.is-danger {
+          outline: 0;
+          background-color: lightness(color-danger, $button-darken-rate);
+          border-color: lightness(color-danger, $button-darken-rate);
+        }
+
+        &.is-outlined {
+
+          background-color: transparent;
+          border-color: lightness(color-gray, $button-outline-darken-rate);
+          color: lightness(color-gray, $button-outline-darken-rate);
+
+          &.is-primary {
+            background: transparent;
+            border-color: lightness(color-primary, $button-outline-darken-rate);
+            color: lightness(color-primary, $button-outline-darken-rate);
+          }
+
+          &.is-success {
+            background: transparent;
+            border-color: lightness(color-success, $button-outline-darken-rate);
+            color: lightness(color-success, $button-outline-darken-rate);
+          }
+
+          &.is-warning {
+            background: transparent;
+            border-color: lightness(color-warning, $button-outline-darken-rate);
+            color: lightness(color-warning, $button-outline-darken-rate);
+          }
+
+          &.is-danger {
+            background: transparent;
+            border-color: lightness(color-danger, $button-outline-darken-rate);
+            color: lightness(color-danger, $button-outline-darken-rate);
+          }
+
+        }
+
+      }
+
+    }
+
+    .file-action,
+    > div {
+
+      align-items: stretch;
+      display: flex;
+      justify-content: flex-start;
+      overflow: hidden;
+      position: relative;
+
+      .file-name,
+      > span {
+        overflow: hidden;
+        align-self:stretch;
+        display:flex;
+        align-items: center;
+        padding: 0 $spacer;
+      }
+  
+    }
+
+  }
+
+  &.is-fullwidth {
+
+    .file-control,
+    > div {
+
+      width: 100%;
+
+      .file-action,
+      > div {
+
+        width: 100%;
+
+        .file-name,
+        > span {
+          width: 100%;
+        }
+    
+        .button:only-child, button:only-child, .file-button:only-child{
+          width: 100%;
+        }
+
+      }
+
+    }
+
+  }
+
+  &.is-right {
+
+    .file-control,
+    > div {
+
+      .file-action,
+      > div {
+
+        .file-name,
+        > span {
+          order: 1;
+        }
+    
+        .file-button,
+        > .button,
+        > button {
+          order: 2;
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,77 @@
+
+@mixin border-colors {
+  &.is-gray-lightest { border-color: $color-gray-lightest; }
+  &.is-gray-lighter { border-color: $color-gray-lighter; }
+  &.is-gray-light { border-color: $color-gray-light; }
+  &.is-gray { border-color: $color-gray;}
+  &.is-gray-dark { border-color: $color-gray-dark; }
+  &.is-gray-darker { border-color: $color-gray-darker; }
+  &.is-primary { border-color: $color-primary; }
+  &.is-success { border-color: $color-success; }
+  &.is-warning { border-color: $color-warning; }
+  &.is-danger { border-color: $color-danger; }
+  &.is-primary-light { border-color: lightness(primary, $color-primary-lightness); }
+  &.is-success-light { border-color: lightness(success, $color-success-lightness); }
+  &.is-warning-light { border-color: lightness(success, $color-warning-lightness); }
+  &.is-danger-light { border-color: lightness(success, $color-danger-lightness); }
+}
+
+@mixin border-widths {
+  &.is-small { border-width: rem(1px); }
+  &.is-normal { border-width: rem(1px); }
+  &.is-medium { border-width: rem(2px); }
+  &.is-large { border-width: rem(3px); }
+  &.is-xlarge { border-width: rem(4px); }
+  &.is-xxlarge { border-width: rem(5px); }
+}
+
+.has-border {
+
+  border: rem(1px) solid $color-gray-lighter; // $base-border-color;
+
+  &.has-border-top {
+    border-right: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+  }
+  &.has-border-right {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+  }
+  &.has-border-bottom {
+    border-right: none !important;
+    border-left: none !important;
+    border-top: none !important;
+  }
+  &.has-border-left {
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+
+}
+
+.has-border-top {
+  border-top: rem(1px) solid $color-gray-lighter;
+  @include border-colors;
+  @include border-widths;
+}
+
+.has-border-right {
+  border-right: rem(1px) solid $color-gray-lighter;
+  @include border-colors;
+  @include border-widths;
+}
+
+.has-border-bottom {
+  border-bottom: rem(1px) solid $color-gray-lighter;
+  @include border-colors;
+  @include border-widths;
+}
+
+.has-border-left {
+  border-left: rem(1px) solid $color-gray-lighter;
+  @include border-colors;
+  @include border-widths;
+}

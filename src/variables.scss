@@ -1,0 +1,191 @@
+$color-primary: color(primary) !default;
+$color-success: color(success) !default;
+$color-warning: color(warning) !default;
+$color-danger:  color(danger) !default;
+
+$color-secondary: color(secondary) !default;
+$color-white: color(white) !default;
+$color-black: color(black) !default;
+
+$color-gray-darker: color(gray-900) !default;
+$color-gray-dark: color(gray-700) !default;
+$color-gray: color(gray-500) !default;
+$color-gray-light: color(gray-300) !default;
+$color-gray-lighter: color(gray-200) !default;
+$color-gray-lightest: color(gray-100) !default;
+
+$color-primary-lightness: -95% !default;
+$color-success-lightness: -75% !default;
+$color-warning-lightness: -65% !default;
+$color-danger-lightness: -75% !default;
+
+
+// Primary Variables
+.test-calc {
+  background-color: lightness(primary, $color-primary-lightness); // lightness(primary, 20%);
+  height: calc(var(--temp) / 2);
+}
+
+
+// Html
+
+$html-font-size: html(font-size);
+
+// Font
+
+$font-size: font(size) !default;
+$font-color: font(color) !default;
+$font-weight: font(weight) !default;
+$font-family: font(family-normal) !default;
+$font-family-mono: font(family-mono) !default;
+$font-family-header: $font-family !default;
+$font-family-fallback: "Helvetica Neue", sans-serif !default;
+
+// Spacing
+
+$spacer: position(spacer) !default; // 5px
+
+// Border & Radius
+
+$base-border-color: color(gray-200);
+$border-radius-small: radius(small) !default;
+$border-radius:  radius(normal) !default;
+$border-radius-large:  radius(large) !default;
+
+// Close 
+
+// Scale is 1.4
+$close-height-small: close(small) !default;
+$close-height: close(normal) !default;
+$close-height-large: close(large) !default;
+
+// Font
+
+$font-size-small: calc(#{$font-size} - rem(2.5px)) !default;
+$font-size-medium: calc(#{$font-size} + rem(2px)) !default;
+$font-size-large: calc(#{$font-size} + rem(4.5px)) !default;
+$font-size-xlarge: calc(#{$font-size} + rem(7px)) !default;
+$font-size-xxlarge: calc(#{$font-size} + rem(9.5px)) !default;
+
+// Breakpoint
+
+$breakpoint-tablet: breakpoint(tablet);
+$breakpoint-desktop: breakpoint(desktop);
+$breakpoint-wide: breakpoint(wide);
+$breakpoint-ultrawide: breakpoint(ultrawide);
+
+// scale 2
+$margin-normal: position(margin) !default;
+
+$margin-small: calc(#{$margin-normal} / 2) !default;
+$margin-medium: calc(#{$margin-normal} * 2) !default;
+$margin-large: calc(#{$margin-normal} * 3) !default;
+$margin-xlarge: calc(#{$margin-normal} * 4) !default;
+$margin-xxlarge: calc(#{$margin-normal} * 5) !default;
+
+// Padding
+
+$padding-normal: position(padding) !default;
+$padding-small: calc(#{$padding-normal} / 2) !default;
+$padding-medium: calc(#{$padding-normal} * 2) !default;
+$padding-large: calc(#{$padding-normal} * 3) !default;
+$padding-xlarge: calc(#{$padding-normal} * 4) !default;
+$padding-xxlarge: calc(#{$padding-normal} * 5) !default;
+
+// Form
+
+$select-caret: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 8'><path d='M0,0l6,8l6-8' width='30' style='fill: darkgray'/></svg>";
+
+$font-input-size: calc(#{$font-size} - 6%);
+
+// Button 
+
+$button-darken-rate: 10%;
+$button-outline-darken-rate: 15%;
+
+$button-font-size: button(font-normal) !default;
+$button-font-size-small: button(font-small) !default;
+$button-font-size-large: button(font-large) !default;
+
+$button-height-small: button(height-small) !default;
+$button-height: button(height-normal) !default;
+$button-height-large: button(height-large) !default;
+
+$button-darken-rate: button(darken-normal) !default;
+$button-darken-rate-outlined: button(darken-outlined) !default;
+
+$button-loading-height-small: button(loading-height-small) !default;
+$button-loading-height: button(loading-height-normal) !default;
+$button-loading-height-large: button(loading-height-large) !default;
+
+// Toggle
+
+$toggle-switch-speed: toggle(switch-speed) !default;
+$toggle-switch-timing: toggle(switch-timing) !default;
+
+$toggle-width-small: toggle(width-small) !default;
+$toggle-width: toggle(width-normal) !default;
+$toggle-width-large: toggle(width-large) !default;
+
+$toggle-height-small: toggle(height-small) !default;
+$toggle-height: toggle(height-normal) !default;
+$toggle-height-large: toggle(height-large) !default;
+
+$toggle-gutter-small: toggle(gutter-small) !default;
+$toggle-gutter: toggle(gutter-normal)!default;
+$toggle-gutter-large: toggle(gutter-large) !default;
+
+$toggle-radius-small: toggle(radius-small) !default;
+$toggle-radius: toggle(radius-normal) !default;
+$toggle-radius-large: toggle(radius-large) !default;
+
+$toggle-radius-small: calc(#{$toggle-height-small} / 2) !default;
+$toggle-radius: calc(#{$toggle-height} / 2) !default;
+$toggle-radius-large: calc(#{$toggle-height-large} / 2) !default;
+
+$toggle-switch-size-small: calc(#{$toggle-height-small} - (#{$toggle-gutter-small} * 2));
+$toggle-switch-size: calc(#{$toggle-height} - (#{$toggle-gutter} * 2));
+$toggle-switch-size-large: calc(#{$toggle-height-large} - (#{$toggle-gutter-large} * 2));
+
+// $toggle-switch-size-small: $toggle-height-small - ($toggle-gutter-small * 2);
+// $toggle-switch-size: $toggle-height - ($toggle-gutter * 2);
+// $toggle-switch-size-large: $toggle-height-large - ($toggle-gutter-large * 2);
+
+// Toast
+
+$toast-border-darken-rate: toast(darken-normal) !default;
+
+// Range Slider
+
+$slider-range-width: slider(width) !default;
+
+$slider-range-handle-size-small: slider(handle-small) !default;
+$slider-range-handle-size: slider(handle-normal) !default;
+$slider-range-handle-size-large: slider(handle-large) !default;
+
+$slider-range-track-height-small: slider(height-small) !default;
+$slider-range-track-height: slider(height-normal) !default;
+$slider-range-track-height-large: slider(height-large) !default;
+
+// Steps
+
+$step-marker-size-xsmall: step(marker-xsmall) !default;
+$step-marker-size-small: step(marker-small) !default;
+$step-marker-size: slider(marker-normal) !default;
+$step-marker-size-large: slider(marker-large) !default;
+
+$step-bar-size-xsmall: slider(bar-xsmall) !default;
+$step-bar-size-small: slider(bar-small) !default;
+$step-bar-size: slider(bar-normal) !default;
+$step-bar-size-large: slider(bar-large) !default;
+
+$step-marker-border-size-xsmall: slider(border-xsmall) !default;
+$step-marker-border-size-small: slider(border-small) !default;
+$step-marker-border-size: slider(border-normal) !default;
+$step-marker-border-size-large: slider(border-large) !default;
+
+// Pager
+
+$pager-link-height-small: pager(height-small) !default;
+$pager-link-height: pager(height-normal) !default;
+$pager-link-height-large: pager(height-large) !default;

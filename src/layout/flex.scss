@@ -1,0 +1,47 @@
+.is-flexbox {
+  display: flex;
+}
+
+.flex-row {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+  > div, button, input, textarea, select, img, ul, ol {
+
+    margin-right: $spacer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+  }
+
+}
+
+.flex-column {
+
+  display: flex;
+  flex-direction: column;
+
+  > div, button, input, textarea, select, img, ul, ol {
+
+    margin-bottom: $spacer;
+    margin-right: auto; // without this items will stretch full width.
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+}
+
+// Simple Box
+
+.box {
+  @extend .has-shadow;
+  padding: rem(10px);
+}

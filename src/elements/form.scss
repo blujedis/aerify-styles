@@ -16,34 +16,34 @@ textarea,
 select {
   -webkit-appearance: none;
   background-color: transparent;
-  border: 0.1rem solid $base-border-color; // $color-quaternary;
+  border: rem(1px) solid $base-border-color;
   border-radius: $border-radius;
   transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
   box-shadow: none;
   box-sizing: inherit;
-  height: 3.8rem;
-  padding: 0.6rem 1rem 0.7rem;
+  height: rem(38px);
+  padding: rem(6px) rem(10px) rem(7px);
   width: 100%;
-  font-size: 1em;
   color: $color-gray-dark;
+  font-size: $font-input-size;
 
   &::placeholder {
-    color: darken($color-gray-light, 5%);
+    color: $color-gray-light; 
   }
 
   &:focus {
     border-color: $color-gray;
     outline: 0;
-    box-shadow:0 0 .275rem $color-gray;
+    box-shadow:0 0 rem(2.75px) $color-gray-light;
   }
 
   &.is-primary {
     border-color: $color-primary;
     color: $color-primary;
     &:focus {
-      border-color: darken($color-primary, 5%);
+      // border-color: lightness(primary, -10%); 
       outline: 0;
-      box-shadow:0 0 .275rem $color-primary;
+      box-shadow:0 0 rem(2.75px) $color-primary;
     }
   }
 
@@ -51,9 +51,9 @@ select {
     border-color: $color-success;  
     color: $color-success;
     &:focus {
-      border-color: darken($color-success, 5%);
+      // border-color: lightness(success, -10%); 
       outline: 0;
-      box-shadow:0 0 .275rem $color-success;
+      box-shadow:0 0 rem(2.75px) $color-success;
     }
   }
 
@@ -61,8 +61,8 @@ select {
     border-color: $color-warning;
     color: $color-warning;
     &:focus {
-      border-color: darken($color-warning, 5%);
-      box-shadow:0 0 .275rem $color-warning;
+      // border-color: lightness(warning, -10%); 
+      box-shadow:0 0 rem(2.75px) $color-warning;
       outline: 0;
     }
   }
@@ -71,8 +71,8 @@ select {
     border-color: $color-danger;
     color: $color-danger;
     &:focus {
-      border-color: darken($color-danger, 5%);
-      box-shadow:0 0 .275rem $color-danger;
+      // border-color: lightness(danger, 0%); 
+      box-shadow:0 0 rem(2.75px) $color-danger;
       outline: 0;
     }
   }
@@ -80,12 +80,14 @@ select {
 }
 
 select {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="30"><path fill="%23' + str-slice(inspect($color-gray-light), 2) + '" d="M0,0l6,8l6-8"/></svg>') center right no-repeat;
-  padding-right: 3rem;
 
-  &:focus {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="30"><path fill="%23' + str-slice(inspect($color-primary), 2) + '" d="M0,0l6,8l6-8"/></svg>');
-  }
+  background: url("data:image/svg+xml, #{$select-caret}") center right no-repeat; 
+  padding-right: rem(30px);
+  background-size: 30px 30px;
+
+  // &:focus {
+  //   background-image: url('data:image/svg+xml;utf8,<svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="30"><path class="caret" d="M0,0l6,8l6-8"/></svg>');
+  // }
 
   &[multiple] {
     background: none;
@@ -93,16 +95,20 @@ select {
   }
 }
 
+label,
+legend,
+.is-inline {
+  font-weight: normal;
+}
+
 textarea {
-  min-height: 6.5rem;
-  font-family: $base-font-family;
+  min-height: rem(65px);
+  font-family: $font-family;
 }
 
 label,
 legend {
   display: block;
- // font-size: 1.4rem;
-  font-weight: 700;
 }
 
 fieldset {
@@ -118,7 +124,6 @@ input[type='radio'] {
 .is-inline {
   position: relative;
   display: inline-block;
-  font-weight: normal;
-  margin-left: 0.5rem;
+  margin-left: rem(5px);
   top: -.13rem; // lines up check with label a little better.
 }

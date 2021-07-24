@@ -1,0 +1,47 @@
+code {
+  font-family: $font-family-mono;
+  background: $color-gray-lightest;
+  border-radius: $border-radius;
+  white-space: nowrap;
+  color: $color-gray-darker;
+  font-weight: normal;
+}
+
+pre {
+  font-family: $font-family-mono;
+  background: $color-gray-lightest; 
+  border-left: rem(3px) solid  $color-secondary;
+  overflow-y: hidden;
+  margin: 0;
+  padding: rem(5px) rem(10px);
+  font-size: $font-size-small;
+  color: $color-gray-darker;
+  font-weight: normal;
+
+  &.is-primary {
+    border-left-color: $color-primary;
+  }
+  
+  &.is-success {
+    border-left-color: $color-success;
+  }
+
+  &.is-warning {
+    border-left-color: $color-warning;
+  }
+
+  &.is-danger {
+    border-left-color: $color-danger;
+  }
+
+  &.is-dark {
+    border-left-color: $color-gray-darker;
+  }
+
+  & > code {
+    border-radius: 0;
+    display: block;
+    padding: rem(10px) rem(15px);
+    white-space: pre;
+  }
+}

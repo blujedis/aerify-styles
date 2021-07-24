@@ -1,0 +1,165 @@
+@use 'sass:math';
+
+.steps {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display:flex;
+  counter-reset: step;
+  width: 100%;
+  justify-content: space-between;
+  align-items: stretch;
+
+
+  li {
+    position: relative;
+    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    counter-increment: step;
+  }
+
+  li:first-child:after {
+    content: none;
+  }
+
+  li:after { // the line between steps.
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: $step-bar-size;
+    background-color: $color-gray-light;
+    top: calc($step-marker-size / 2);
+    left: -50%;
+    z-index: -1;
+  }
+
+  li:before { // this is the numeric step above text.
+    content: " ";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc($step-marker-size / 2);
+    width: $step-marker-size;
+    height: $step-marker-size;
+    border-radius: 50%;
+    color: $color-gray-dark;
+    margin: 0 auto $spacer auto;
+    border: $step-marker-border-size solid $color-gray-light;
+    background-color: #fff;
+  }
+
+  li.is-active:after {
+    background-color: $color-gray;
+  }
+ 
+  li.is-active:before {
+    border-color: $color-gray-dark;
+    background: $color-gray-dark;
+    color: white;
+  }
+
+  &.is-xsmall {
+    li:before {
+      font-size: calc($step-marker-size-xsmall / 2);
+      width: $step-marker-size-xsmall;
+      height: $step-marker-size-xsmall;
+      border: $step-marker-border-size-xsmall solid  $color-gray-light;
+    }
+    li:after {
+      height: $step-bar-size-xsmall;
+      top: calc($step-marker-size-xsmall / 2);
+    }
+  }
+
+  &.is-small {
+    li:before {
+      font-size: calc($step-marker-size-small / 2);
+      width: $step-marker-size-small;
+      height: $step-marker-size-small;
+      border: $step-marker-border-size-small solid  $color-gray-light;
+    }
+    li:after {
+      height: $step-bar-size-small;
+      top: calc($step-marker-size-small / 2);
+    }
+  }
+
+  &.is-large {
+    li:before {
+      font-size: calc($step-marker-size-large / 2);
+      width: $step-marker-size-large;
+      height: $step-marker-size-large;
+      border: $step-marker-border-size-large solid #bebebe;
+    }
+    li:after {
+      height: $step-bar-size-large;
+      top: calc($step-marker-size-large / 2);
+    }
+  }
+
+  &.has-counters:not(.is-xsmall) { // xsmall too tiny for counters can't see them.
+    li:before {
+      content: counter(step);
+    }
+  }
+
+  &.is-primary {
+
+    li.is-active:after {
+      background-color: $color-primary;
+    }
+  
+    li.is-active:before {
+      border-color: lightness(primary, 20%);
+      background:  $color-primary;
+      color: white;
+    }
+
+  }
+
+  &.is-success {
+
+    li.is-active:after {
+      background-color: $color-success;
+    }
+  
+    li.is-active:before {
+      border-color: lightness(success, 20%);
+      background:  $color-success;
+      color: white;
+    }
+
+  }
+
+  &.is-warning {
+
+    li.is-active:after {
+      background-color: $color-warning;
+    }
+  
+    li.is-active:before {
+      border-color: lightness(warning, 20%);
+      background:  $color-warning;
+      color: white;
+    }
+
+  }
+
+  &.is-danger {
+
+    li.is-active:after {
+      background-color: $color-danger;
+    }
+  
+    li.is-active:before {
+      border-color: lightness(danger, 20%);
+      background:  $color-danger;
+      color: white;
+    }
+
+  }
+  
+}

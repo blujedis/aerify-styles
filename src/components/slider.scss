@@ -1,0 +1,320 @@
+// <div className="slider">
+//    <input type="range" className="slider-range" min="0" max="100" onChange={onChanged} />
+//    <div className="slider-result">75</div>
+// </div>
+
+
+.slider {
+
+  width: $slider-range-width;
+  margin: rem(8px) 0 0 0%;
+  display: flex;
+  align-items: center;
+
+  // DEPRECATED use Flexbox instead.
+  //
+  // when value exists adjust width of main slider.
+  // &.has-value {
+  //   input {
+  //     width: calc(100% - (#{$slider-range-label-width + 1.3rem}));
+  //   }
+  // }
+
+  &.is-primary {
+
+    input {
+
+      &::-webkit-slider-thumb {
+        background: $color-gray;
+        &:hover {
+          background: $color-primary;
+        }
+  
+      }
+  
+      &:active::-webkit-slider-thumb {
+        background: $color-primary;
+      }
+  
+      &:focus {
+        &::-webkit-slider-thumb {
+          box-shadow: 0 0 0 rem(3px) #fff,
+            0 0 0 rem(6px) $color-primary;
+        }
+      }
+  
+    }
+
+    div {
+
+      background: $color-primary;
+
+      &:after {
+        border-right-color: $color-primary;
+      }
+
+    }
+
+  }
+
+  &.is-success  {
+
+    input {
+
+      &::-webkit-slider-thumb {
+        background: $color-gray;
+        &:hover {
+          background: $color-success;
+        }
+
+      }
+
+      &:active::-webkit-slider-thumb {
+        background: $color-success;
+      }
+
+      &:focus {
+        &::-webkit-slider-thumb {
+          box-shadow: 0 0 0 rem(3px) #fff,
+            0 0 0 rem(6px) $color-success;
+        }
+      }
+
+    }
+
+    div {
+
+      background: $color-success;
+
+      &:after {
+        border-right-color: $color-success;
+      }
+
+    }
+
+  }
+
+  &.is-warning {
+
+    input {
+
+      &::-webkit-slider-thumb {
+        background: $color-gray;
+        &:hover {
+          background: $color-warning;
+        }
+
+      }
+
+      &:active::-webkit-slider-thumb {
+        background: $color-warning;
+      }
+
+      &:focus {
+        &::-webkit-slider-thumb {
+          box-shadow: 0 0 0 rem(3px) #fff,
+            0 0 0 rem(6px) $color-warning;
+        }
+      }
+
+    }
+
+    div {
+
+      background: $color-warning;
+
+      &:after {
+        border-right-color: $color-warning;
+      }
+
+    }
+
+  }
+
+  &.is-danger {
+
+    input {
+
+      &::-webkit-slider-thumb {
+        background: $color-gray;
+        &:hover {
+          background: $color-danger;
+        }
+  
+      }
+  
+      &:active::-webkit-slider-thumb {
+        background: $color-danger;
+      }
+  
+      &:focus {
+        &::-webkit-slider-thumb {
+          box-shadow: 0 0 0 rem(3px) #fff,
+            0 0 0 rem(6px) $color-danger;
+        }
+      }
+    }
+
+    div {
+
+      background: $color-danger;
+
+      &:after {
+        border-right-color: $color-danger;
+      }
+
+    }
+
+  }
+
+  &.is-small {
+
+    input {
+
+      height: $slider-range-track-height-small;
+      border-radius: $border-radius-small;
+
+        // Range Handle
+      &::-webkit-slider-thumb {
+        width: $slider-range-handle-size-small;
+        height: $slider-range-handle-size-small;
+      }
+    
+      &::-moz-range-thumb {
+        width: $slider-range-handle-size-small;
+        height: $slider-range-handle-size-small;
+      }
+
+    }
+
+    div {
+      font-size: smaller;
+      padding: rem(2.5px) rem(12.5px);
+      border-radius: $border-radius-small;
+      &:after {
+        top: $slider-range-track-height-small + rem(4px);
+      }
+    }
+
+  }
+
+  &.is-large {
+
+    input {
+
+      height: $slider-range-track-height-large;
+      border-radius: $border-radius-large;
+
+        // Range Handle
+      &::-webkit-slider-thumb {
+        width: $slider-range-handle-size-large;
+        height: $slider-range-handle-size-large;
+      }
+    
+      &::-moz-range-thumb {
+        width: $slider-range-handle-size-large;
+        height: $slider-range-handle-size-large;
+      }
+
+    }
+
+    div {
+      font-size: x-large;
+      padding: rem(7.5px) rem(17.5px);
+      border-radius: $border-radius-large;
+      &:after {
+        top: $slider-range-track-height-large + .7rem; // add padding.
+      }
+    }
+
+  }
+
+  input {
+
+    -webkit-appearance: none;
+    width: 100%;
+    height: $slider-range-track-height;
+    border-radius: $border-radius;
+    background: $color-gray-light;
+    outline: none;
+    padding: 0;
+    margin: 0;
+  
+    // Range Handle
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: $slider-range-handle-size;
+      height: $slider-range-handle-size;
+      border-radius: 50%;
+      background: $color-gray;
+      cursor: pointer;
+      transition: background .15s ease-in-out;
+  
+      &:hover {
+        background: $color-gray-darker;
+      }
+  
+    }
+  
+    &:active::-webkit-slider-thumb {
+      background: $color-gray-darker;
+    }
+  
+    &::-moz-range-thumb {
+      width: $slider-range-handle-size;
+      height: $slider-range-handle-size;
+      border: 0;
+      border-radius: 50%;
+      background: $color-gray;
+      cursor: pointer;
+      transition: background .15s ease-in-out;
+  
+      &:hover {
+        background: $color-gray-darker;
+      }
+    }
+  
+    &:active::-moz-range-thumb {
+      background: $color-gray-darker;
+    }
+  
+    // Focus state
+    &:focus {
+      &::-webkit-slider-thumb {
+        box-shadow: 0 0 0 rem(3px) #fff,
+          0 0 0 rem(6px) $color-gray-darker;
+      }
+    }
+  
+  }
+  
+  // Range Label
+  div {
+    display: inline-block;
+    position: relative;
+    //width: $slider-range-label-width;
+    color: $color-white;
+    line-height: rem(22.5px);
+    text-align: center;
+    border-radius: $border-radius;
+    background: $color-gray;
+    padding: rem(4px) rem(17.5px);
+    margin-left: rem(10px);
+    font-weight: 400;
+  
+    &:after {
+      position: absolute;
+      top: $slider-range-track-height + rem(4px);
+      left: -rem(6px);
+      width: 0;
+      height: 0;
+      border-top: rem(7px) solid transparent;
+      border-right: rem(7px) solid $color-gray;
+      border-bottom: rem(7px) solid transparent;
+      content: '';
+    }
+  }
+
+} 
+
+

@@ -1,0 +1,40 @@
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+
+// @media screen and (max-width: 39rem) {
+//   .container {
+//     max-width: 36rem;
+//   }
+// }
+
+// Tablet, large than phone.
+@media screen and (min-width: 40rem) {
+  .container {
+    max-width: 76rem;
+  }
+}
+
+// Larger than Tablet is Desktop
+@media screen and (min-width: 80rem) {
+  .container {
+    max-width: 116rem;
+  }
+}
+
+// Extra large Desktop 24" monitor and up.
+@media screen and (min-width: 120rem) {
+  .container {
+    max-width: 156rem;
+  }
+}
+
+// Extra wide Desktop 27" or above
+// @media screen and (min-width: $breakpoint-ultrawide) {
+//   // .container {}
+// }

@@ -28,22 +28,26 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "copy": "cp -r src/scss/ dist/scss/",
+    "copy": "cp -r src/ dist/scss/",
     "prebuild": "npm run clean",
     "build:autoprefix": "postcss --use autoprefixer --map false --output dist/css/aerify.css dist/css/aerify.css",
     "build:cleancss": "cleancss -o dist/css/aerify.min.css dist/css/aerify.css",
-    "build:sass": "sass --style=compressed src/scss/aerify.scss:dist/css/aerify.css",
-    "build": "npm run build:sass && npm run build:autoprefix && npm run build:cleancss",
+    "build:sass": "sass --style=compressed src/aerify.scss:dist/css/aerify.css",
+    "build": "npm run build:sass && npm run build:autoprefix && npm run build:cleancss && npm run copy",
     "prerelease": "npm run build",
     "postrelease": "git push --follow-tags",
-    "release": "npx standard-version",
-    "start": "rollup -c -w"
+    "release": "npx standard-version"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "clean-css-cli": "^5.3.0",
+    "milligram": "^1.4.1",
     "postcss-cli": "^8.3.1",
     "rimraf": "^3.0.2",
-    "sass": "^1.32.13"
+    "sass": "^1.32.13",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "postcss": "^8.3.5"
   }
 }

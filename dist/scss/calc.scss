@@ -1,0 +1,22 @@
+
+// Example
+// div {
+//   font-size: calcRem(32px);
+//   @include rem(width, 100px);
+//   @include rem(margin, 50px);
+// }
+
+@function calcRem($pixels) {
+  $rem: $pixels / 10px;
+  @return #{$rem}rem;
+}
+
+// Provides fallback when rem is not supported.
+@mixin rem($property, $value) {
+  #{$property}: $value;
+  #{$property}: calcRem($value);
+}
+
+@function color($color-name) {
+  @return var(--color-#{$color-name});
+}

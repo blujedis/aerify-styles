@@ -1,0 +1,116 @@
+@use 'sass:math';
+
+.close {
+
+  user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 290486px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 0;
+  height: $close-height;
+  width: $close-height;
+  max-height: $close-height;
+  max-width: $close-height;
+  min-height: $close-height;
+  min-width: $close-height;
+  outline: 0;
+  position: relative;
+  vertical-align: top;
+
+  &:focus, &:hover {
+    &:after, &:before {
+      background-color: $color-gray-dark;
+    }
+  }
+
+  &:before, &:after {
+    background-color: #fff;
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform-origin: center center;
+    // transition: background-color 0.3s ease;
+  }
+
+  &:after  {
+    height: 100%;
+    width: 1px;
+    background-color: $color-gray-light;
+  }
+
+  &:before {
+    height: 1px;
+    width: 100%;
+    background-color: $color-gray-light;
+  }
+
+  &.is-small {
+    height:      $close-height-small;
+    max-height:  $close-height-small;
+    max-width:   $close-height-small;
+    min-height:  $close-height-small;
+    min-width:   $close-height-small;
+    width:       $close-height-small;
+  }
+
+  &.is-large {
+    height:      $close-height-large;
+    max-height:  $close-height-large;
+    max-width:   $close-height-large;
+    min-height:  $close-height-large;
+    min-width:   $close-height-large;
+    width:       $close-height-large;
+  }
+
+  &.is-rounded {
+
+    background-color: rgba(10,10,10,.2);
+    // transition: background-color 0.3s ease;
+
+    &:focus, &:hover {
+      background-color: rgba(10,10,10,.3);
+    }
+
+    &:before {
+      width: 50%;
+      background-color: #fff;
+    }
+
+    &:after {
+      height: 50%;
+      background-color: #fff;
+    }
+
+  }
+
+  &.is-offset {
+
+    position: absolute;
+    right: calc(-(#{$close-height}) / 4);
+    top:  calc(-(#{$close-height}) / 4);
+    border: rem(1px) solid $color-white;
+    background-color: $color-gray-light;
+
+    &:focus, &:hover {
+      background-color: $color-gray;
+    }
+
+    &.is-left {
+     left:  calc(-(#{$close-height}) / 4);
+    }
+
+  }
+
+}
+
+
+

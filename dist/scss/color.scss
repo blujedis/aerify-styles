@@ -1,0 +1,40 @@
+// Backgrounds and Colors
+
+.has-background-gray          { background-color: $color-gray-lightest; }
+.has-background-gray-light    { background-color: $color-gray-light; }
+.has-background-gray-lighter  { background-color: $color-gray-lighter; }
+.has-background-gray-lightest { background-color: $color-gray-lightest; }
+.has-background-gray-dark     { background-color: $color-gray-dark; }
+.has-background-gray-darker   { background-color: $color-gray-darker; }
+
+.has-background-primary       { background-color: $color-primary;  }
+.has-background-success       { background-color: $color-success; }
+.has-background-warning       { background-color: $color-warning; }
+.has-background-danger        { background-color: $color-danger; }
+
+.has-background-primary-light { background-color: $color-primary-light;  }
+.has-background-success-light { background-color: $color-success-light; }
+.has-background-warning-light { background-color: $color-warning-light; }
+.has-background-danger-light  { background-color: $color-danger-light; }
+
+.has-text-gray                { color: $color-gray-lightest; }
+.has-text-gray-light          { color: $color-gray-light; }
+.has-text-gray-lighter        { color: $color-gray-lighter; }
+.has-text-gray-lightest       { color: $color-gray-lightest; }
+.has-text-gray-dark           { color: $color-gray-dark; }
+.has-text-gray-darker         { color: $color-gray-darker; }
+
+.has-text-white               { color: $color-white; }
+.has-text-primary             { color: $color-primary;  }
+.has-text-success             { color: $color-success; }
+.has-text-warning             { color: $color-warning; }
+.has-text-danger              { color: $color-danger; }
+
+.has-text-primary-light       { color: $color-primary-light;  }
+.has-text-success-light       { color: $color-success-light; }
+.has-text-warning-light       { color: $color-warning-light; }
+.has-text-danger-light        { color: $color-danger-light; }
+
+.has-text-left                          { text-align: left;}
+.has-text-right                         { text-align: right;}
+.has-text-centered, .has-text-center    { text-align: center;}

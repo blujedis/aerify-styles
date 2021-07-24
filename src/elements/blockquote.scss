@@ -1,0 +1,9 @@
+blockquote {
+  border-left: rem(3px) solid $color-gray-lighter;
+  margin: 0;
+  padding: rem(10px) rem(15px);
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}

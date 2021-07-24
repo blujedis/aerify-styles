@@ -1,0 +1,107 @@
+
+@function getColorName($btncolor) {
+
+  $colorStr: #{$btncolor};
+  $isVar: null;
+
+  @if type-of($btncolor) == 'string' {
+    $isVar: str-index($string: $colorStr, $substring: 'var');
+  }
+
+  @if $isVar {
+    $len: str-length($string: $colorStr);
+    $btncolor: string.slice($colorStr, 13, $len);
+  }
+
+  $btncolor: str-replace($btncolor, 'color-');
+  $btncolor: str-replace($btncolor, ')');
+
+  @return $btncolor;
+
+}
+
+@function getColorVals($color) {
+
+ $color: getColorName($color);
+  $color-h: var(#{'--color-'+$color+'-h'});
+  $color-s: var(#{'--color-'+$color+'-s'});
+  $color-l: var(#{'--color-'+$color+'-l'});
+  $color-a: var(#{'--color-'+$color+'-a'});
+  
+  $result: (
+    h: $color-h,
+    s: $color-s,
+    l: $color-l,
+    a: $color-a
+  );
+
+  @return $result;
+
+}
+
+// Gets a hex color and escapes #.
+//
+@function urlSafeColor($colour) {
+  @return '%23' + str-slice('#{$colour}', 2, -1);
+}
+
+// Adjusts hue of HSL css var
+//
+// .component {
+//   background-color: saturation(primary, 25); // more
+// }
+@function hue($color, $value){
+  $map: getColorVals($color);
+  $color-h: $value;
+  $color-s: var(#{$color+'-s'});
+  $color-l: var(#{$color+'-l'});
+  $color-a: var(#{$color+'-a'});
+  @return hsla($color-h, $color-s, $color-l, $color-a);
+}
+
+// Adjusts saturation of HSL css var
+//
+// .component {
+//   background-color: saturation(primary, 25%); // more
+//   background-color: saturation(primary, -25%); // less
+// }
+@function saturation($color, $percentage){
+  $map: getColorVals($color);
+  $color-h: map.get($map, h);
+  $color-s: map.get($map, s);
+  $color-l: map.get($map, l);
+  $color-a: map.get($map, a);
+  $percentage: (math.div(percent($percentage), 2));
+  @return hsla($color-h, calc(#{$color-s} - #{$percentage}), $color-l, $color-a);
+}
+
+// Adjusts lightness of HSL css var
+//
+// .component {
+//   background-color: lightness(primary, -10%); // lighter
+//   background-color: lightness(primary, 30%); // darker
+// }
+@function lightness($color, $percentage){
+  $map: getColorVals($color);
+  $color-h: map.get($map, h);
+  $color-s: map.get($map, s);
+  $color-l: map.get($map, l);
+  $color-a: map.get($map, a);
+  $percentage: (math.div(percent($percentage), 2));
+  @return hsla($color-h, $color-s, calc(#{$color-l} - #{$percentage}), $color-a);
+}
+
+
+// Adjusts saturation of HSL css var
+//
+// .component {
+//   background-color: alpha(primary, 0.9);
+// }
+@function alpha($color, $value) {
+  $map: getColorVals($color);
+  $color-h: map.get($map, h);
+  $color-s: map.get($map, s);
+  $color-l: map.get($map, l);
+  $color-a: $value;
+  @return hsla($color-h, $color-s, $color-l, $color-a);
+}
