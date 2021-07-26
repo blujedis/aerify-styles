@@ -50,7 +50,7 @@ $modal-content-width: 64rem;
 
     .modal-content {
 
-      @extend .box;
+      @extend .block;
       overflow: auto;
       border-radius: $border-radius;
       background-color: $color-white;

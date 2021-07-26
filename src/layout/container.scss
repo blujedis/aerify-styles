@@ -6,35 +6,34 @@
   width: 100%;
 }
 
-
-// @media screen and (max-width: 39rem) {
-//   .container {
-//     max-width: 36rem;
-//   }
-// }
+@media screen and (max-width: 20rem) {
+  .container {
+    max-width: $breakpoint-tablet - 4rem;
+  }
+}
 
 // Tablet, large than phone.
-@media screen and (min-width: 40rem) {
+@media screen and (min-width: $breakpoint-tablet) {
   .container {
-    max-width: 76rem;
+    max-width: $breakpoint-desktop - 4rem;
   }
 }
 
 // Larger than Tablet is Desktop
-@media screen and (min-width: 80rem) {
+@media screen and (min-width: $breakpoint-desktop) {
   .container {
-    max-width: 116rem;
+    max-width: $breakpoint-wide - 4rem;
   }
 }
 
 // Extra large Desktop 24" monitor and up.
-@media screen and (min-width: 120rem) {
+@media screen and (min-width: $breakpoint-wide) {
   .container {
-    max-width: 156rem;
+    max-width: $breakpoint-ultrawide - 4rem;
   }
 }
 
 // Extra wide Desktop 27" or above
-// @media screen and (min-width: $breakpoint-ultrawide) {
-//   // .container {}
-// }
+@media screen and (min-width: $breakpoint-ultrawide) {
+ .container {}
+}

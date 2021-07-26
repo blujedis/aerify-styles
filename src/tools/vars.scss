@@ -1,8 +1,4 @@
 
-// Gets variable from $vars.
-@function get($property) {
-  @return map.get($vars, $property);
-}
 
 @function html($var) {
   @return var(--html-#{$var});

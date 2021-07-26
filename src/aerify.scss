@@ -15,6 +15,11 @@
 @import "utils/helpers";
 @import "utils/border";
 
+@import "layout/flex";
+@import "layout/container";
+@import "layout/grid";
+@import "layout/block";
+
 @import "elements/blockquote";
 @import "elements/button";
 @import "elements/code";
@@ -24,10 +29,6 @@
 @import "elements/table";
 @import "elements/typography";
 @import "elements/image";
-
-@import "layout/flex";
-@import "layout/container";
-@import "layout/grid";
 
 @import "components/tag";
 @import "components/close";

@@ -1,9 +1,22 @@
+:root {
+  --loader-size: 20px;
+  --loader-size-small: 14px;
+  --loader-size-large: 30px;
+}
 
+$loader-size: var(--loader-size);
+$loader-size-small: var(--loader-size-small);
+$loader-size-large: var(--loader-size-large);
 
 @mixin buttonSemantic($color, $lightness) {
 
   $color-light: lightness($color, $lightness);
-  $color-light-darken: lightness($color, $lightness + 10);
+  $color-light-darken: lightness($color, $lightness + 6);
+  $color-light-font: lightness($color, 10%);
+
+  @if str-index($string: #{$color}, $substring: 'dim') {
+   $color-light-font: lightness($color, 60%);
+  }
 
   background-color: $color;
   color: $color-white;
@@ -17,7 +30,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.125em alpha(primary, .3); 
+    box-shadow: 0 0 0 0.125em alpha($color, .3); 
   }
 
   &[disabled] {
@@ -34,7 +47,7 @@
 
     background-color: $color-light;
     border-color: $color-light;
-    color: $color;
+    color: $color-light-font;
 
     &:focus,
     &:hover {
@@ -43,7 +56,7 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.125em alpha($color, .3); // rgba($color-primary, .3);
+      box-shadow: 0 0 0 0.125em alpha($color, .3); 
     }
   
     &[disabled] {
@@ -58,8 +71,70 @@
 
   }
 
+  &.is-outlined.is-light {
+    &:focus,
+    &:hover {
+      border-color:$color-light-darken;
+    }
+  }
+
 }
 
+@mixin buttonSemanticOutline($color, $lightness) {
+
+  $color-outline-darken: lightness($color, $lightness + 6);
+
+  background: transparent;
+  color: $color;
+
+  &:focus,
+  &:hover {
+    background: transparent;
+    border-color: $color-outline-darken; 
+    color: $color-outline-darken; 
+  }
+
+  &[disabled] {
+    &:focus,
+    &:hover {
+      border-color: inherit;
+      color: $color-primary;
+    }
+  }
+
+}
+
+@mixin buttonSemanticActive($color) {
+  background-color: $color;
+  border: rem(1px) solid $color;
+  color: $color-white;
+}
+
+@mixin groupRounded() {
+
+  .button,
+  button,
+  input[type='button'],
+  input[type='reset'],
+  input[type='submit'] {
+
+    &:first-child {
+      border-top-left-radius: 290486px;
+      border-bottom-left-radius: 290486px;
+    }
+    &:last-child {
+      border-top-right-radius: 290486px;
+      border-bottom-right-radius: 290486px;
+    }
+
+  }
+
+}
+
+// @function calcLoader() {
+//  $left: calc($button-loading-height / 2);
+//  $right: calc($button-loading-height / 2);
+// }
 
 .button,
 button,
@@ -82,13 +157,12 @@ input[type='submit'] {
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
-
   transition: background-color 0.3s ease;
+  position: relative;
 
   &:focus,
   &:hover {
-    background-color: $color-gray;
-    color: $color-white;
+    background-color: $color-gray-lightest;
     outline: 0;
   }
 
@@ -107,343 +181,42 @@ input[type='submit'] {
   }
 
   &.is-primary {
-
    @include buttonSemantic($color-primary, $color-primary-lightness);
-
-
-    // background-color: $color-primary;
-    // border: rem(1px) solid $color-primary;
-    // color: $color-white;
-
-    // &:focus,
-    // &:hover {
-    //   background-color: lightness(primary, 75%) !important;
-    //   border-color: lightness(primary, $button-darken-rate); 
-    //   outline: 0;
-    // }
-
-    // &:focus {
-    //   box-shadow: 0 0 0 0.125em alpha(primary, .3); 
-    // }
-  
-    // &[disabled] {
-
-    //   &:focus,
-    //   &:hover {
-    //     background-color: $color-primary;
-    //     border-color: $color-primary;
-    //   }
-
-    // }
-
-    // &.is-light {
-
-    //   background-color: lightness(primary, $color-primary-lightness);
-    //   border-color: lightness(primary, $color-primary-lightness);
-    //   color: $color-primary;
-
-    //   &:focus,
-    //   &:hover {
-    //     background-color: lightness(primary-light, math.div($button-darken-rate ,2)); // darken($color-primary-light, math.div($button-darken-rate ,2));
-    //     border-color: lightness(primary-light, math.div($button-darken-rate ,2)); // darken($color-primary-light, math.div($button-darken-rate,2));
-    //   }
-  
-    //   &:focus {
-    //     box-shadow: 0 0 0 0.125em alpha(primary, .3); // rgba($color-primary, .3);
-    //   }
-    
-    //   &[disabled] {
-  
-    //     &:focus,
-    //     &:hover {
-    //       background-color: lightness(primary, $color-primary-lightness);
-    //       border-color: lightness(primary, $color-primary-lightness);
-    //     }
-        
-    //   }
-
-    // }
-
-    // &.is-outlined.is-light {
-    //   &:focus,
-    //   &:hover {
-    //     border-color: lightness(primary-light, $button-darken-rate);
-    //   }
-    // }
-
   }
 
   &.is-success {
-
-    background-color: $color-success;
-    border: 0rem(1px) solid $color-success;
-    color: $color-white;
-
-    &:focus,
-    &:hover {
-      background-color: lightness(success, $button-darken-rate); //  darken($color-success, $button-darken-rate);
-      border-color: lightness(success, $button-darken-rate); //  darken($color-success, $button-darken-rate);
-      outline: 0;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 0.125em alpha(success, .3); //  rgba($color-success, .3);
-    }
-  
-
-    &[disabled] {
-
-      &:focus,
-      &:hover {
-        background-color: $color-success;
-        border-color: $color-success;
-      }
-    }
-
-    &.is-light {
-
-      background-color: lightness(success, $color-success-lightness);
-      border-color: lightness(success, $color-success-lightness);
-      color: $color-success;
-
-      &:focus,
-      &:hover {
-        background-color: lightness(success-light, math.div($button-darken-rate,2)); // darken($color-success-light, math.div($button-darken-rate,2));
-        border-color: lightness(success-light, math.div($button-darken-rate,2)); // darken($color-success-light, math.div($button-darken-rate, 2));
-      }
-  
-      &:focus {
-        box-shadow: 0 0 0 0.125em alpha(success, .3); //  rgba($color-success, .3);
-      }
-    
-      &[disabled] {
-  
-        &:focus,
-        &:hover {
-          background-color: lightness(success, $color-success-lightness);
-          border-color: lightness(success, $color-success-lightness);
-        }
-        
-      }
-
-    }
-
-    &.is-outlined.is-light {
-      &:focus,
-      &:hover {
-        border-color: lightness(success-light, $button-darken-rate); // darken($color-success-light, $button-darken-rate);
-      }
-    }
-
+    @include buttonSemantic($color-success, $color-success-lightness);
   }
 
   &.is-warning {
-
-    background-color: $color-warning;
-    border: 0rem(1px) solid $color-warning;
-    color: $color-white;
-
-    &:focus,
-    &:hover {
-      background-color: lightness(warning, $button-darken-rate); // darken($color-warning, $button-darken-rate);
-      border-color: lightness(warning, $button-darken-rate); // darken($color-warning, $button-darken-rate);
-      outline: 0;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 0.125em alpha(warning, .3); // rgba($color-warning, .3);
-    }
-  
-
-    &[disabled] {
-
-      &:focus,
-      &:hover {
-        background-color: $color-warning;
-        border-color: $color-warning;
-      }
-    }
-
-    &.is-light {
-
-      background-color: lightness(success, $color-warning-lightness);
-      border-color: lightness(success, $color-warning-lightness);
-      color: $color-warning;
-
-      &:focus,
-      &:hover {
-        background-color: lightness(warning-light, math.div($button-darken-rate, 2)); // darken($color-warning-light, math.div($button-darken-rate, 2));
-        border-color: lightness(warning-light, math.div($button-darken-rate, 2)); // darken($color-warning-light, math.div($button-darken-rate, 2));
-      }
-  
-      &:focus {
-        box-shadow: 0 0 0 0.125em alpha(warning, .3); // rgba($color-warning, .3);
-      }
-    
-      &[disabled] {
-  
-        &:focus,
-        &:hover {
-          background-color: lightness(success, $color-warning-lightness);
-          border-color: lightness(success, $color-warning-lightness);
-        }
-        
-      }
-
-    }
-
-    &.is-outlined.is-light {
-      &:focus,
-      &:hover {
-        border-color: lightness(warning-light, $button-darken-rate); // darken($color-warning-light, $button-darken-rate);
-      }
-    }
-
+    @include buttonSemantic($color-warning, $color-warning-lightness);
   }
 
   &.is-danger {
-
-    background-color: $color-danger;
-    border: 0rem(1px) solid $color-danger;
-    color: $color-white;
-
-    &:focus,
-    &:hover {
-      background-color: lightness(danger, $button-darken-rate); //  darken($color-danger, $button-darken-rate);
-      border-color: lightness(danger, $button-darken-rate); // darken($color-danger, $button-darken-rate);
-      outline: 0;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 0.125em alpha(danger, .3); // rgba($color-danger, .3);
-    }
-  
-
-    &[disabled] {
-
-      &:focus,
-      &:hover {
-        background-color: $color-danger;
-        border-color: $color-danger;
-      }
-    }
-
-    &.is-light {
-
-      background-color: lightness(success, $color-danger-lightness);
-      border-color: lightness(success, $color-danger-lightness);
-      color: $color-danger;
-
-      &:focus,
-      &:hover {
-        background-color: lightness(danger-light, math.div($button-darken-rate, 2)); // darken($color-danger-light, math.div($button-darken-rate, 2));
-        border-color: lightness(danger-light, math.div($button-darken-rate, 2)); // darken($color-danger-light, math.div($button-darken-rate, 2));
-      }
-  
-      &:focus {
-        box-shadow: 0 0 0 0.125em alpha(danger, .3); // rgba($color-danger, .3);
-      }
-    
-      &[disabled] {
-  
-        &:focus,
-        &:hover {
-          background-color: lightness(success, $color-danger-lightness);
-          border-color: lightness(success, $color-danger-lightness);
-        }
-        
-      }
-
-    }
-
-    &.is-outlined.is-light {
-      &:focus,
-      &:hover {
-        border-color: lightness(danger-light, $button-darken-rate); // darken($color-danger-light, $button-darken-rate);
-      }
-    }
-
-
+    @include buttonSemantic($color-danger, $color-danger-lightness);
   }
 
   &.is-dark {
+    @include buttonSemantic($color-dark, $color-dark-lightness);
+  }
 
-    background-color: $color-gray-dark;
-    border: rem(1px) solid $color-gray-dark;
-    color: $color-white;
-
-    &:focus,
-    &:hover {
-      background-color: lightness(gray-dark, $button-darken-rate); // darken($color-gray-dark, $button-darken-rate);
-      border-color: lightness(gray-dark, $button-darken-rate); //  darken($color-gray-dark, $button-darken-rate);
-      outline: 0;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 0.125em alpha(gray-dark, .3); // rgba($color-gray-dark, .3);
-    }
-  
-
-    &[disabled] {
-
-      &:focus,
-      &:hover {
-        background-color: $color-gray-dark;
-        border-color: $color-gray-dark;
-      }
-    }
-
-    &.is-light {
-
-      background-color: $color-gray-lighter;
-      border-color: $color-gray-lighter;
-      color: $color-gray-dark;
-
-      &:focus,
-      &:hover {
-        background-color: lightness(gray-lighter, math.div($button-darken-rate, 2)); // darken($color-gray-lighter, math.div($button-darken-rate, 2));
-        border-color: lightness(gray-lighter, math.div($button-darken-rate, 2)); //
-      }
-  
-      &:focus {
-        box-shadow: 0 0 0 0.125em alpha(gray-dark, .3); // rgba($color-gray-dark, .3);
-      }
-    
-      &[disabled] {
-  
-        &:focus,
-        &:hover {
-          background-color: $color-gray-lighter;
-          border-color: $color-gray-lighter;
-        }
-        
-      }
-
-    }
-
-    &.is-outlined.is-light {
-      &:focus,
-      &:hover {
-        border-color: lightness(gray-lighter, $button-darken-rate); // darken($color-gray-lighter, $button-darken-rate);
-      }
-    }
-
-
+  &.is-dim {
+    @include buttonSemantic($color-dim, $color-dim-lightness);
   }
 
   &.is-small {
     font-size: $button-font-size-small;
-    font-weight: 700;
+    font-weight: 500;
     height: $button-height-small;
     letter-spacing: rem(1px);
-    line-height: $button-height-small + -rem(1px); // just looks a little better with this adjustment.
+    line-height: $button-height-small;
     padding: 0 rem(17.5px);
     border-radius: $border-radius;
   }
 
   &.is-large {
     font-size: $button-font-size-large;
-    font-weight: 700;
+    font-weight: 500;
     height:$button-height-large;
     line-height: $button-height-large;
     padding: 0 rem(40px);
@@ -454,13 +227,12 @@ input[type='submit'] {
 
     background-color: transparent;
     color: $color-gray;
-    // transition: background-color 0.3s ease;
 
     &:focus,
     &:hover {
       background-color: transparent;
-      border-color: $color-gray; 
-      color: lightness(var(--color-gray), $button-outline-darken-rate);
+      border-color: $color-gray-light; 
+      color: lightness($color-gray, 10%);
     }
 
     &[disabled] {
@@ -472,113 +244,27 @@ input[type='submit'] {
     }
 
     &.is-primary {
-
-      background: transparent;
-      color: $color-primary;
-
-      &:focus,
-      &:hover {
-        background: transparent;
-        border-color: lightness(primary, $button-outline-darken-rate); // darken($color-primary, $button-outline-darken-rate);
-        color: lightness(primary, $button-outline-darken-rate); // darken($color-primary, $button-outline-darken-rate);
-      }
-
-      &[disabled] {
-        &:focus,
-        &:hover {
-          border-color: inherit;
-          color: $color-primary;
-        }
-      }
-
+      @include buttonSemanticOutline($color-primary, $button-darken-rate);
     }
 
     &.is-success {
-
-      background: transparent;
-      color: $color-success;
-
-      &:focus,
-      &:hover {
-        background: transparent;
-        border-color: lightness(success, $button-outline-darken-rate); // darken($color-success, $button-outline-darken-rate);
-        color: lightness(success, $button-outline-darken-rate); // darken($color-success, $button-outline-darken-rate);
-      }
-
-      &[disabled] {
-        &:focus,
-        &:hover {
-          border-color: inherit;
-          color: $color-success;
-        }
-      }
-
+      @include buttonSemanticOutline($color-success, $button-darken-rate);
     }
 
     &.is-warning {
-
-      background: transparent;
-      color: $color-warning;
-
-      &:focus,
-      &:hover {
-        background: transparent;
-        border-color: lightness(warning, $button-outline-darken-rate); // darken($color-warning, $button-outline-darken-rate);
-        color: lightness(warning, $button-outline-darken-rate); // darken($color-warning, $button-outline-darken-rate);
-      }
-
-      &[disabled] {
-        &:focus,
-        &:hover {
-          border-color: inherit;
-          color: $color-warning;
-        }
-      }
-
+      @include buttonSemanticOutline($color-warning, $button-darken-rate);
     }
 
     &.is-danger {
-
-      background: transparent;
-      color: $color-danger;
-
-      &:focus,
-      &:hover {
-        background: transparent;
-        border-color: lightness(danger, $button-outline-darken-rate); // darken($color-danger, $button-outline-darken-rate);
-        color: lightness(danger, $button-outline-darken-rate); // darken($color-danger, $button-outline-darken-rate);
-      }
-
-      &[disabled] {
-        &:focus,
-        &:hover {
-          border-color: inherit;
-          color: $color-danger;
-        }
-      }
-
+      @include buttonSemanticOutline($color-danger, $button-darken-rate);
     }
 
     &.is-dark {
-
-      background: transparent;
-      color: $color-gray-darker;
-
-      &:focus,
-      &:hover {
-        background: transparent;
-        border-color: lightness(gray-dark, $button-outline-darken-rate); // darken($color-gray-dark, $button-outline-darken-rate);
-        color: lightness(gray-dark, $button-outline-darken-rate); // darken($color-gray-dark, $button-outline-darken-rate);
-      }
-
-      &[disabled] {
-        &:focus,
-        &:hover {
-          border-color: inherit;
-          color: $color-gray-dark;
-        }
-      }
-
+      @include buttonSemanticOutline($color-dark, $button-darken-rate);
+    }
+    
+    &.is-dim {
+      @include buttonSemanticOutline($color-dim, $button-darken-rate);
     }
 
   }
@@ -629,43 +315,105 @@ input[type='submit'] {
     border-radius: 290486px;
   }
 
-  &.is-loading {
+  &.is-loading-left {
 
     pointer-events: none;
-    color: transparent !important;
-    position: relative;
-
-    &:after {
-      // left: calc(50% - (#{math.div($button-loading-height,2)}));
-      // top: calc(50% - (#{math.div($button-loading-height,2)}));
-      left: calc(50% - (calc($button-loading-height / 2)));
-      top: calc(50% - (calc($button-loading-height / 2)));
-      position: absolute !important;
-      border: rem(4px) solid alpha(gray-lightest, .3); // rgba($color-gray-lightest, .3); 
-      border-top: rem(3px) solid alpha(gray-lightest, .9); // rgba($color-gray-lightest, .9); 
-      border-radius: 50%;
-      width: $button-loading-height;
-      height: $button-loading-height;
-      animation: simpleSpin .5s linear infinite;
-      display: block;
+    padding-left: calc(#{$loader-size} * 2);
+  
+    &:before {
       content: '';
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      left: calc(#{$loader-size} / 1.75); 
+      width: $loader-size;
+      height: $loader-size;
+      will-change: transform;
+      margin-top: calc(#{$loader-size} / -2); 
+      // margin-left: - math.div($loader-size, 2);
+      border-radius: 50%;
+      border: 3px solid $color-gray-lighter;
+      border-top-color: $color-gray;
+      animation: spinner .6s linear infinite;
     }
+
+    // &.is-right {
+    //   padding-right: calc(#{$loader-size} * 1.75);
+    //   &:after {
+    //      right: calc(#{$loader-size} / 1.75); 
+    //   }
+    // }
+
+
+
+    // &:after {
+    //   // left: calc(50% - (#{math.div($button-loading-height,2)}));
+    //   // top: calc(50% - (#{math.div($button-loading-height,2)}));
+    //   left:  30px / 2;
+    //   top: 30px / 2;
+    //   position: absolute !important;
+    //   border: rem(4px) solid alpha(gray-lightest, .3); // rgba($color-gray-lightest, .3); 
+    //   border-top: rem(3px) solid alpha(gray-lightest, .9); // rgba($color-gray-lightest, .9); 
+    //   border-radius: 50%;
+    //   width: 30px;
+    //   height: 30px;
+    //   animation: simpleSpin .5s linear infinite;
+    //   display: block;
+    //   content: '';
+    // }
+  
+  }
+  
+  &.is-loading-right {
+
+    pointer-events: none;
+    padding-right: calc(#{$loader-size} * 2);
+  
+    &:before {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      right: calc(#{$loader-size} / 1.75); 
+      width: $loader-size;
+      height: $loader-size;
+      will-change: transform;
+      margin-top: calc(#{$loader-size} / -2); 
+      // margin-left: - math.div($loader-size, 2);
+      border-radius: 50%;
+      border: 3px solid $color-gray-lighter;
+      border-top-color: $color-gray;
+      animation: spinner .6s linear infinite;
+    }
+
+    // &.is-right {
+    //   padding-right: calc(#{$loader-size} * 1.75);
+    //   &:after {
+    //      right: calc(#{$loader-size} / 1.75); 
+    //   }
+    // }
+
+
+
+    // &:after {
+    //   // left: calc(50% - (#{math.div($button-loading-height,2)}));
+    //   // top: calc(50% - (#{math.div($button-loading-height,2)}));
+    //   left:  30px / 2;
+    //   top: 30px / 2;
+    //   position: absolute !important;
+    //   border: rem(4px) solid alpha(gray-lightest, .3); // rgba($color-gray-lightest, .3); 
+    //   border-top: rem(3px) solid alpha(gray-lightest, .9); // rgba($color-gray-lightest, .9); 
+    //   border-radius: 50%;
+    //   width: 30px;
+    //   height: 30px;
+    //   animation: simpleSpin .5s linear infinite;
+    //   display: block;
+    //   content: '';
+    // }
   
   }
 
-  &.is-loading.is-dark {
-    &:after {
-      border-color: $color-gray;
-      border-top-color: $color-gray-dark;
-    }
-  }
 
-  &.is-loading.is-primary {
-    &:after {
-      border-color: alpha(primary, .5); // rgba($color-primary, .5);
-      border-top-color: $color-primary;
-    }
-  }
 
 }
 
@@ -673,34 +421,14 @@ input[type='submit'] {
   
   display: flex;
   justify-content: flex-start;
-  flex:1;
-
-  .button,
-  button,
-  input[type='button'],
-  input[type='reset'],
-  input[type='submit'] {
-
-    &:not(:last-child){
-      margin-right: $spacer;
-    }
-
-  }
+  gap: $spacer;
 
   &.is-centered {  justify-content: center; }
   &.is-right {  justify-content: flex-end; }
-
   &.is-grouped {
 
     @extend .prevent-flicker;
-
-    .is-active {
-      z-index: 3; // hides sibling border.
-      pointer-events: none;
-      background-color: $color-gray;
-      border: rem(1px) solid $color-gray;
-      color: $color-white;
-    }
+    gap: 0;
 
     .button,
     button,
@@ -708,15 +436,12 @@ input[type='submit'] {
     input[type='reset'],
     input[type='submit'] {
 
-      // override background/border here
-      // when grouped use "is-active" 
-      // to show toggled state.
-      background-color: transparent;
-      border: rem(1px) solid $color-gray-lighter;
-      color: $color-gray;
+       background-color: transparent;
+       border: rem(1px) solid $color-gray-lighter;
+       color: $color-gray;
 
       &:not(:last-child) {
-        margin-right: -rem(1px);
+        margin-right: -1px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -732,84 +457,91 @@ input[type='submit'] {
 
       &:focus,
       &:hover {
-        background-color: transparent;
-        border-color: $color-gray;
-        color: lightness(color-gray, $button-outline-darken-rate); // darken($color-gray, $button-outline-darken-rate);
+        background-color: $color-gray-lightest;
         z-index: 4; // ensure border is seen or could be hidden behind shifted margin.
         outline: 0;
       }
 
-      &.is-primary.is-active {
-        background-color: $color-primary;
-        border: rem(1px) solid $color-primary;
+      &.is-active {
+        z-index: 3; // hides sibling border.
+        pointer-events: none;
+        background-color: $color-gray;
+        border: rem(1px) solid $color-gray;
         color: $color-white;
+       }
+
+      &.is-primary.is-active {
+        @include buttonSemanticActive($color-primary);
       }
 
       &.is-success.is-active {
-        background-color: $color-success;
-        border: rem(1px)  solid $color-success;
-        color: $color-white;
+        @include buttonSemanticActive($color-success);
       }
 
       &.is-warning.is-active {
-        background-color: $color-warning;
-        border: rem(1px)  solid $color-warning;
-        color: $color-white;
+        @include buttonSemanticActive($color-warning);
       }
 
       &.is-danger.is-active {
-        background-color: $color-danger;
-        border: rem(1px) solid $color-danger;
-        color: $color-white;
+        @include buttonSemanticActive($color-danger);
       }
 
       &.is-dark.is-active {
-        background-color: $color-gray-dark;
-        border: rem(1px)  solid $color-gray-dark;
-        color: $color-white;
+        @include buttonSemanticActive($color-dark);
+      }
+
+      &.is-dim.is-active {
+        @include buttonSemanticActive($color-dim);
       }
 
     }
 
     &.is-rounded {
-
-      .button,
-      button,
-      input[type='button'],
-      input[type='reset'],
-      input[type='submit'] {
-
-        &:first-child {
-          border-top-left-radius: 290486px;
-          border-bottom-left-radius: 290486px;
-        }
-        &:last-child {
-          border-top-right-radius: 290486px;
-          border-bottom-right-radius: 290486px;
-        }
-
-      }
-
-   
+      @include groupRounded();
     }
 
   }
 
+
 }
 
+@media screen and (max-width: 20rem) {
+  .buttons { 
+    flex-flow: row wrap;
+  }
+}
 
-@keyframes simpleSpin {
+// Tablet, large than phone.
+@media screen and (min-width: $breakpoint-tablet) {
+  .buttons { 
+    flex-flow: row wrap;
+  }
+}
+
+// Larger than Tablet is Desktop
+@media screen and (min-width: $breakpoint-desktop) {
+  .buttons { 
+    flex-flow: row wrap;
+  }
+}
+
+// Extra large Desktop 24" monitor and up.
+@media screen and (min-width: $breakpoint-wide) {
+  .buttons { 
+    flex-flow: row wrap;
+  }
+}
+
+// Extra wide Desktop 27" or above
+@media screen and (min-width: $breakpoint-ultrawide) {
+ .buttons {}
+}
+
+@keyframes spinner {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(359deg);
-  }
-}
-
-
-@media screen and (max-width: calc(rem(400px) - 4)) {
-  .buttons { 
-    flex-flow: row wrap;
   }
 }

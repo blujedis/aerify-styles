@@ -3,10 +3,10 @@ section,
 .field,
 .block {
 
-  margin-bottom: calc(#{$spacer} * 2);
+  margin-bottom: calc(#{$spacer} * 3);
 
   &.is-small {
-    margin-bottom: $spacer;
+    margin-bottom: calc(#{$spacer} * 2);
   }
 
   &.is-large {

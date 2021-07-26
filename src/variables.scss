@@ -3,7 +3,8 @@ $color-success: color(success) !default;
 $color-warning: color(warning) !default;
 $color-danger:  color(danger) !default;
 
-$color-secondary: color(secondary) !default;
+$color-dark: color(dark) !default;
+$color-dim: color(dim) !default;
 $color-white: color(white) !default;
 $color-black: color(black) !default;
 
@@ -15,17 +16,17 @@ $color-gray-lighter: color(gray-200) !default;
 $color-gray-lightest: color(gray-100) !default;
 
 $color-primary-lightness: -95% !default;
-$color-success-lightness: -75% !default;
-$color-warning-lightness: -65% !default;
-$color-danger-lightness: -75% !default;
+$color-success-lightness: -90% !default;
+$color-warning-lightness: -58% !default;
+$color-danger-lightness: -76% !default;
+$color-dark-lightness: -110% !default;
+$color-dim-lightness: -57% !default;
 
 
 // Primary Variables
 .test-calc {
   background-color: lightness(primary, $color-primary-lightness); // lightness(primary, 20%);
-  height: calc(var(--temp) / 2);
 }
-
 
 // Html
 
@@ -61,42 +62,42 @@ $close-height-large: close(large) !default;
 
 // Font
 
-$font-size-small: calc(#{$font-size} - rem(2.5px)) !default;
-$font-size-medium: calc(#{$font-size} + rem(2px)) !default;
-$font-size-large: calc(#{$font-size} + rem(4.5px)) !default;
-$font-size-xlarge: calc(#{$font-size} + rem(7px)) !default;
-$font-size-xxlarge: calc(#{$font-size} + rem(9.5px)) !default;
+$font-size-small: calc($font-size - rem(2.5px)) !default;
+$font-size-medium: calc($font-size + rem(2px)) !default;
+$font-size-large: calc($font-size + rem(4.5px)) !default;
+$font-size-xlarge: calc($font-size + rem(7px)) !default;
+$font-size-xxlarge: calc($font-size + rem(9.5px)) !default;
 
 // Breakpoint
 
-$breakpoint-tablet: breakpoint(tablet);
-$breakpoint-desktop: breakpoint(desktop);
-$breakpoint-wide: breakpoint(wide);
-$breakpoint-ultrawide: breakpoint(ultrawide);
+$breakpoint-tablet: 40rem;
+$breakpoint-desktop: 80rem;
+$breakpoint-wide: 120rem;
+$breakpoint-ultrawide: 160rem;
 
 // scale 2
 $margin-normal: position(margin) !default;
 
-$margin-small: calc(#{$margin-normal} / 2) !default;
-$margin-medium: calc(#{$margin-normal} * 2) !default;
-$margin-large: calc(#{$margin-normal} * 3) !default;
-$margin-xlarge: calc(#{$margin-normal} * 4) !default;
-$margin-xxlarge: calc(#{$margin-normal} * 5) !default;
+$margin-small: calc($margin-normal / 2) !default;
+$margin-medium: calc($margin-normal * 2) !default;
+$margin-large: calc($margin-normal * 3) !default;
+$margin-xlarge: calc($margin-normal * 4) !default;
+$margin-xxlarge: calc($margin-normal * 5) !default;
 
 // Padding
 
 $padding-normal: position(padding) !default;
-$padding-small: calc(#{$padding-normal} / 2) !default;
-$padding-medium: calc(#{$padding-normal} * 2) !default;
-$padding-large: calc(#{$padding-normal} * 3) !default;
-$padding-xlarge: calc(#{$padding-normal} * 4) !default;
-$padding-xxlarge: calc(#{$padding-normal} * 5) !default;
+$padding-small: calc($padding-normal / 2) !default;
+$padding-medium: calc($padding-normal * 2) !default;
+$padding-large: calc($padding-normal * 3) !default;
+$padding-xlarge: calc($padding-normal * 4) !default;
+$padding-xxlarge: calc($padding-normal * 5) !default;
 
 // Form
 
 $select-caret: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 8'><path d='M0,0l6,8l6-8' width='30' style='fill: darkgray'/></svg>";
 
-$font-input-size: calc(#{$font-size} - 6%);
+$font-input-size: calc($font-size - 6%);
 
 // Button 
 
@@ -139,13 +140,13 @@ $toggle-radius-small: toggle(radius-small) !default;
 $toggle-radius: toggle(radius-normal) !default;
 $toggle-radius-large: toggle(radius-large) !default;
 
-$toggle-radius-small: calc(#{$toggle-height-small} / 2) !default;
-$toggle-radius: calc(#{$toggle-height} / 2) !default;
-$toggle-radius-large: calc(#{$toggle-height-large} / 2) !default;
+$toggle-radius-small: calc($toggle-height-small / 2) !default;
+$toggle-radius: calc($toggle-height / 2) !default;
+$toggle-radius-large: calc($toggle-height-large / 2) !default;
 
-$toggle-switch-size-small: calc(#{$toggle-height-small} - (#{$toggle-gutter-small} * 2));
-$toggle-switch-size: calc(#{$toggle-height} - (#{$toggle-gutter} * 2));
-$toggle-switch-size-large: calc(#{$toggle-height-large} - (#{$toggle-gutter-large} * 2));
+$toggle-switch-size-small: calc($toggle-height-small - ($toggle-gutter-small * 2));
+$toggle-switch-size: calc($toggle-height - ($toggle-gutter * 2));
+$toggle-switch-size-large: calc($toggle-height-large - ($toggle-gutter-large * 2));
 
 // $toggle-switch-size-small: $toggle-height-small - ($toggle-gutter-small * 2);
 // $toggle-switch-size: $toggle-height - ($toggle-gutter * 2);
